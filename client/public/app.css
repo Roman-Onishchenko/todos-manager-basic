@@ -1,0 +1,36 @@
+td:last-child {
+   padding-right: 10px !important;
+}
+legend > span {
+	display: none;
+}
+#filterButton, #deleteButton, #cancelButton {
+	transition: background-color 0.25s ease;
+}
+#filterButton:hover { 
+  background-color: #78909C;
+}
+#cancelButton:hover { 
+  background-color: #78909C;
+}
+#deleteButton:hover { 
+  background-color: #E53935;
+}
+.highPriorityIcon {
+  color: #C62828
+}
+.middlePriorityIcon {
+  color: #FF6D00
+}
+.lowPriorityIcon {
+  color: #FFB300
+}
+.tableImg {
+	position: absolute;
+	height: 50%;
+  width: 50%;
+  left: 25%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

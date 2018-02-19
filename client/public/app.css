@@ -1,36 +1,104 @@
-td:last-child {
+.table__iconcell:last-child {
    padding-right: 10px !important;
 }
 legend > span {
-	display: none;
+  display: none;
 }
-#filterButton, #deleteButton, #cancelButton {
-	transition: background-color 0.25s ease;
+.table-wrapper {
+  min-height: 420px;
+  max-height: 420px;
+  overflow: auto;
 }
-#filterButton:hover { 
-  background-color: #78909C;
+.paper {
+  width: 95%;
+  margin: auto;
+  margin-top: 50px;
+  overflow-x: auto;
 }
-#cancelButton:hover { 
-  background-color: #78909C;
+.table{
+  min-width: 500px;
 }
-#deleteButton:hover { 
-  background-color: #E53935;
+.table__iconcell{
+  padding: 10px 0 10px 0 !important;
+  background-color: #ECEFF1;
 }
-.highPriorityIcon {
+.table__maincell{
+  padding: 10px 5px 10px 15px !important;
+  font-family: Rubik;
+  font-weight: 500;
+  font-size: 14px !important;
+  background-color: #F5F5F5;
+  color: #37474F !important;
+}
+.icon_success-icon {
+  color: #558B2F;
+}
+.icon_edit-icon {
+  color: #2a51a4;
+}
+.icon_delete-icon {
+  color: #6D4C41;
+}
+.paragraph_success-text{
+  color: #1B5E20;
+}
+.button {
+  display: block !important;
+  transition: background-color 0.25s ease !important;
+  font-size: .88em !important;
+  margin: 18px auto !important;
+  color: white !important;
+}
+.button_grey {
+  background-color: #607D8B !important;
+}
+.button_grey:hover { 
+  background-color: #78909C !important;
+}
+.button_delete-tasks {
+  background-color: #C62828 !important;
+}
+.button_delete-tasks:hover { 
+  background-color: #E53935 !important;
+}
+.icon_high-priority {
   color: #C62828
 }
-.middlePriorityIcon {
+.icon_middle-priority {
   color: #FF6D00
 }
-.lowPriorityIcon {
+.icon_low-priority {
   color: #FFB300
 }
 .tableImg {
-	position: absolute;
-	height: 50%;
+  position: absolute;
+  height: 50%;
   width: 50%;
   left: 25%;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.radios-wrapper {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}
+.form-control {
+  margin: 20px !important;
+}
+.radio-group {
+  display: flex !important;
+  flex-flow: row wrap !important;
+  margin: 5px;
+}
+.form-label {
+  color: brown !important;
+  text-align: center;
+}
+.modal-buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+  margin: auto;
 }

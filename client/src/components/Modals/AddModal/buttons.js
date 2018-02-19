@@ -1,24 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from 'material-ui/styles';
 import Button from 'material-ui/Button';
 
-
-const styles = theme => ({
-  root: {
-   display: 'flex',
-   justifyContent: 'center',
-  },
-  cancelButton: {
-    backgroundColor: '#607D8B',
-    color: 'white',
-    padding: '0 9px',
-    fontSize: '.86em',
-    marginRight: '25px',
-  },
-});
-
-class Buttons extends Component {
+export default class Buttons extends Component {
   constructor(props) {
     super(props);
 
@@ -29,22 +13,15 @@ class Buttons extends Component {
   }
 
   render() {
-    const { classes } = this.props;
     return (
-      <div className={classes.root}>
-        <Button variant="raised" id="cancelButton" color="default" className={classes.cancelButton}>
+      <div className="modal-buttons">
+        <Button variant="raised" color="default" className="button button_grey">
           Cancel
         </Button>
-        <Button variant="raised" color="primary">
+        <Button variant="raised" color="primary" className="button">
           Save
         </Button>
       </div>
     );
   }
 }
-
-Buttons.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
-
-export default withStyles(styles)(Buttons);

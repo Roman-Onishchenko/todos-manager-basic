@@ -1,22 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from 'material-ui/styles';
 import TextField from 'material-ui/TextField';
 
-const styles = theme => ({
-  container: {
-    display: 'flex',
-    flexWrap: 'wrap',
-  },
-  input: {
-    margin: theme.spacing.unit,
-  },
-});
-
-function EditTaskInput(props) {
+export default function EditTaskInput(props) {
   const { classes } = props;
-  return (
-    <div className={classes.container}>
+    return (
       <TextField
         id="full-width"
         label="Label"
@@ -28,12 +16,5 @@ function EditTaskInput(props) {
         multiline
         margin="normal"
       />
-    </div>
-  );
+    );
 }
-
-EditTaskInput.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
-
-export default withStyles(styles)(EditTaskInput);

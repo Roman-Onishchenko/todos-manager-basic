@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from 'material-ui/styles';
 import Table, { TableBody, TableCell, TableRow } from 'material-ui/Table';
 import Paper from 'material-ui/Paper';
 import Button from 'material-ui/Button';
@@ -15,68 +14,8 @@ import FilterCategory from '../FilterCategory/';
 import AddModallWrapped from '../Modals/AddModal/';
 import EmptyTableImg from './emptyTableImg';
 
-const styles = theme => ({
-  root: {
-    width: '95%',
-    margin: 'auto',
-    marginTop: theme.spacing.unit * 3,
-    overflowX: 'auto',
-  },
-  table: {
-    minWidth: 500,
-  },
-  tableBody: {
-    minHeight: '420px',
-    maxHeight: '420px',
-    overflow: 'auto',
-  },
-  mainCell: {
-    padding: '10px 5px 10px 15px',
-    fontFamily: 'Rubik',
-    fontWeight: '500',
-    fontSize: '15px',
-    backgroundColor: '#F5F5F5',
-    color: '#37474F',
-  },
-  iconCell: {
-    padding: '10px 0 10px 0',
-    backgroundColor: '#ECEFF1',
-  },
-  successIcon: {
-    color: '#558B2F',
-  },
-  editIcon: {
-    color: '#2a51a4',
-  },
-  deleteIcon: {
-    color: '#6D4C41',
-  },
-  filterButton: {
-    display: 'block',
-    margin: '18px auto',
-    backgroundColor: '#607D8B',
-    color: 'white',
-    padding: '0 10px',
-    fontSize: '.88em',
-  },
-  deleteButton: {
-    display: 'block',
-    margin: '18px auto',
-    backgroundColor: '#C62828',
-    color: 'white',
-    padding: '0 10px',
-    fontSize: '.9em',
-  },
-  button: {
-    display: 'block',
-    margin: '18px auto',
-  },
-  taskDone: {
-    color: '#1B5E20',
-  },
-});
 
-class TasksTable extends Component {
+export default class TasksTable extends Component {
   constructor(props) {
     super(props);
 
@@ -87,77 +26,78 @@ class TasksTable extends Component {
   }
 
   render() {
-    const { classes, tasksList } = this.props;
+    const { tasksList } = this.props;
     return (
-      <Paper className={classes.root}>
-        <Button variant="raised" color="primary" className={classes.button}>
+      <Paper className="paper">
+        <AddModallWrapped />
+        {/*<Button variant="raised" color="primary" className="button">
           Add Task
         </Button>
-        <div className={classes.tableBody}>
-          <Table className={classes.table}>
+        <div className="table-wrapper">
+          <Table className="table">
             <TableBody>
-              <EmptyTableImg />
-              {/*<TableRow>
-                <TableCell className={classes.iconCell}>
+              <TableRow>
+                <TableCell className="table__iconcell">
                   <Tooltip id="tooltip-icon" title="Success">
                     <IconButton>
-                      <SuccessIcon className={classes.successIcon} />
+                      <SuccessIcon className="icon icon_success-icon" />
                     </IconButton>
                   </Tooltip>
                 </TableCell>
-                <TableCell className={classes.mainCell}><p className={classes.taskDone}>'асто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной "рыбой" для текстов на латинице с начала XVI века'</p></TableCell>
-                <TableCell className={classes.iconCell}>
+                <TableCell className="table__maincell"><p className="paragraph paragraph_success-text">'асто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной "рыбой" для текстов на латинице с начала XVI века'</p></TableCell>
+                <TableCell className="table__iconcell">
                 </TableCell>
-                <TableCell className={classes.iconCell}>
+                <TableCell className="table__iconcell">
                   <IconButton>
-                    <PriorityIcon className={"highPriorityIcon"} />
+                    <PriorityIcon className="icon icon_high-priority" />
                   </IconButton>
                 </TableCell>
-                <TableCell className={classes.iconCell}>
+                <TableCell className="table__iconcell">
                 </TableCell>
               </TableRow>
               {tasksList.map(task => {
                 return (
                   <TableRow key={task.get('id')}>
-                    <TableCell className={classes.iconCell}>
+                    <TableCell className="table__iconcell">
                       <Tooltip id="tooltip-icon" title="Priority">
                         <IconButton>
-                          <PriorityIcon className={`${task.get('priority')}PriorityIcon`} />
+                          <PriorityIcon className={`icon_${task.get('priority')}-priority`} />
                         </IconButton>
                       </Tooltip>
                     </TableCell>
-                    <TableCell className={classes.mainCell}>{task.get('text')}</TableCell>
-                    <TableCell className={classes.iconCell}>
+                    <TableCell className="table__maincell">{task.get('text')}</TableCell>
+                    <TableCell className="table__iconcell">
                       <Tooltip id="tooltip-icon" title="Success">
                         <IconButton aria-label="Success">
-                          <SuccessIcon className={classes.successIcon} />
+                          <SuccessIcon className="icon icon_success-icon" />
                         </IconButton>
                       </Tooltip>
                     </TableCell>
-                    <TableCell className={classes.iconCell}>
+                    <TableCell className="table__iconcell">
                       <Tooltip id="tooltip-icon" title="Edit">
                          <IconButton aria-label="Edit">
-                          <EditIcon className={classes.editIcon} />
+                          <EditIcon className="icon icon_edit-icon" />
                         </IconButton>
                       </Tooltip>
                     </TableCell>
-                    <TableCell className={classes.iconCell}>
+                    <TableCell className="table__iconcell">
                       <Tooltip id="tooltip-icon" title="Delete">
                          <IconButton aria-label="Delete">
-                          <DeleteIcon className={classes.deleteIcon} />
+                          <DeleteIcon className="icon icon_delete-icon" />
                         </IconButton>
                       </Tooltip>
                     </TableCell>
                   </TableRow>
                 );
-              })} */}
+              })}
             </TableBody>
           </Table>
         </div>
-        <Button variant="raised" id="filterButton" color="default" className={classes.filterButton}>
+        <Button variant="raised" className="button button_grey">
           Open Filters
         </Button>
-        {/*<Button variant="raised" id="deleteButton" color="default" className={classes.deleteButton}>
+        <FilterCategory />
+        <Button variant="raised" className="button button_delete-tasks">
           Clear Tasks
         </Button>*/}
       </Paper>
@@ -167,7 +107,4 @@ class TasksTable extends Component {
 
 TasksTable.propTypes = {
   tasksList: PropTypes.object,
-  classes: PropTypes.object.isRequired,
 };
-
-export default withStyles(styles)(TasksTable);

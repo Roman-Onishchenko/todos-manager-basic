@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
-import Typography from 'material-ui/Typography';
 import Modal from 'material-ui/Modal';
 import Button from 'material-ui/Button';
+import Typography from 'material-ui/Typography';
 
-function rand() {
-  return Math.round(Math.random() * 20) - 10;
-}
+import EditTaskInput from '../input';
+import Buttons from '../buttons';
+import Radios from '../radios';
 
 function getModalStyle() {
   const top = 50;
@@ -28,41 +28,30 @@ const styles = theme => ({
     boxShadow: theme.shadows[5],
     padding: theme.spacing.unit * 4,
   },
+  header: {
+    textAlign: 'center',
+    color: '#3f51b5',
+    fontSize: '1.45em',
+  }
 });
 
-class SimpleModal extends React.Component {
-  state = {
-    open: false,
-  };
-
-  handleOpen = () => {
-    this.setState({ open: true });
-  };
-
-  handleClose = () => {
-    this.setState({ open: false });
-  };
-
+class EditModal extends React.Component {
   render() {
     const { classes } = this.props;
-
     return (
       <div>
-        <Typography gutterBottom>Click to get the full Modal experience!</Typography>
-        <Button onClick={this.handleOpen}>Open Modal</Button>
         <Modal
-          aria-labelledby="simple-modal-title"
-          aria-describedby="simple-modal-description"
-          open={this.state.open}
-          onClose={this.handleClose}
-        >
+          aria-labelledby="add-task"
+          aria-describedby="add-task"
+          open={false}
+        > 
+          <Typography className={classes.header} variant="title" id="modal-title">
+            Edit Task
+          </Typography>
           <div style={getModalStyle()} className={classes.paper}>
-            <Typography variant="title" id="modal-title">
-              Text in a modal
-            </Typography>
-            <Typography variant="subheading" id="simple-modal-description">
-              Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-            </Typography>
+            <EditTaskInput />
+            <Radios />
+            <Buttons hideTaskModal={this.props.hideTaskModal} />
           </div>
         </Modal>
       </div>
@@ -70,11 +59,10 @@ class SimpleModal extends React.Component {
   }
 }
 
-SimpleModal.propTypes = {
+EditModal.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-// We need an intermediary variable for handling the recursive nesting.
-const SimpleModalWrapped = withStyles(styles)(SimpleModal);
+const EditModallWrapped = withStyles(styles)(EditModal);
 
-export default SimpleModalWrapped;
+export default EditModallWrapped;

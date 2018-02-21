@@ -5,25 +5,58 @@ import PropTypes from 'prop-types';
 
 import * as actions from '../reduxBase/actions/actions';
 import TasksTable from '../components/Table/';
+import AddModal from '../components/Modals/AddModal/';
+import EditModal from '../components/Modals/EditModal/';
 
 class RootApp extends Component {
-
+  static propTypes = {
+    tasksList: PropTypes.object,
+    addTask: PropTypes.func,
+    updateTask: PropTypes.func,
+    showTaskAddModal: PropTypes.func,
+    showTaskEditModal: PropTypes.func,
+    hideTaskModal: PropTypes.func,
+  }
+  
   render() {
+    const tasksList = this.props.tasksReducer.get('tasks');
+    const modalType = this.props.tasksReducer.get('modalType');
+    const activeTaskId = this.props.tasksReducer.get('tasks').get('taskId');
+    let activeTask;
+    if (activeTaskId) {
+      activeTask = this.props.tasksReducer.get('tasks').find(task => task.get('id') === activeTaskId);
+    }
     return (
       <div className="wrapper">
-        <TasksTable tasksList={this.props.tasksList} />
+        {modalType === 'addTask' &&
+          <AddModal
+            open
+            hideTaskModal={this.props.hideTaskModal}
+            addTask={this.props.addTask}
+          />
+        }
+        {modalType === 'editTask' &&
+          <EditModal
+            activeTask={activeTask}
+            hideTaskModal={this.props.hideTaskModal}
+            updateTask={this.props.updateTask}
+          />
+        }
+        <TasksTable 
+          tasksList={tasksList} 
+          showTaskAddModal={this.props.showTaskAddModal}
+          showTaskEditModal={this.props.showTaskEditModal}
+          deleteTask={this.props.deleteTask}
+          doneTask={this.props.doneTask}
+        />
       </div>
     );
   }
 }
 
-RootApp.propTypes = {
-  tasksList: PropTypes.object,
-};
-
 export default connect(
   state => ({
-     tasksList: state.todoListReducer.get('tasks')
+     tasksReducer: state.todoListReducer
   }),
   dispatch => bindActionCreators(actions, dispatch)
 )(RootApp);

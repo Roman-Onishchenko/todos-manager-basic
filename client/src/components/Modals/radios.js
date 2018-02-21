@@ -44,19 +44,6 @@ export default class Radios extends React.Component {
             <FormControlLabel value="Low" control={<Radio />} label="Low" />
           </RadioGroup>
         </FormControl>
-        <FormControl component="fieldset" required className="form-control">
-          <FormLabel component="legend" className="form-label">Task is done?</FormLabel>
-          <RadioGroup
-            aria-label="taskIsDone"
-            name="taskIsDone"
-            className="radio-group"
-            value={this.state.value}
-            onChange={this.handleChange}
-          >
-            <FormControlLabel value="Done" control={<Radio />} label="Done" />
-            <FormControlLabel value="Not done" control={<Radio />} label="Not done" />
-          </RadioGroup>
-        </FormControl>
       </div>
     );
   }

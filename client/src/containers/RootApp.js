@@ -37,13 +37,14 @@ class RootApp extends Component {
         }
         {modalType === 'editTask' &&
           <EditModal
+            open
             activeTask={activeTask}
             hideTaskModal={this.props.hideTaskModal}
             updateTask={this.props.updateTask}
           />
         }
-        <TasksTable 
-          tasksList={tasksList} 
+        <TasksTable
+          tasksList={tasksList}
           showTaskAddModal={this.props.showTaskAddModal}
           showTaskEditModal={this.props.showTaskEditModal}
           deleteTask={this.props.deleteTask}

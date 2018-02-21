@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import TextField from 'material-ui/TextField';
 
-export default function EditTaskInput(props) {
+export default function TaskInput(props) {
   const { classes } = props;
     return (
       <TextField

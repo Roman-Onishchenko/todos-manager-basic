@@ -1,3 +1,6 @@
+body{
+  background-color: lightgrey;
+}
 .table__iconcell:last-child {
    padding-right: 10px !important;
 }

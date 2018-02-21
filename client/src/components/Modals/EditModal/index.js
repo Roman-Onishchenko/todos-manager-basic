@@ -2,10 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import Modal from 'material-ui/Modal';
-import Button from 'material-ui/Button';
 import Typography from 'material-ui/Typography';
 
-import EditTaskInput from '../input';
+import TaskInput from '../input';
 import Buttons from '../buttons';
 import Radios from '../radios';
 
@@ -41,15 +40,15 @@ class EditModal extends React.Component {
     return (
       <div>
         <Modal
-          aria-labelledby="add-task"
-          aria-describedby="add-task"
-          open={false}
+          aria-labelledby="edit-task"
+          aria-describedby="edit-task"
+          open={this.props.open}
         > 
-          <Typography className={classes.header} variant="title" id="modal-title">
-            Edit Task
-          </Typography>
           <div style={getModalStyle()} className={classes.paper}>
-            <EditTaskInput />
+            <Typography className={classes.header} variant="title" id="modal-title">
+              Edit Task
+            </Typography>
+            <TaskInput />
             <Radios />
             <Buttons hideTaskModal={this.props.hideTaskModal} />
           </div>

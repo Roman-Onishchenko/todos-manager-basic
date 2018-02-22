@@ -50,7 +50,7 @@ export default class TasksTable extends Component {
     const { tasksList } = this.props;
     const { priority, category, taskDone } = this.state;
     let tableContent;
-    if(!Number(taskDone) && this.getTaskByPriority(priority, category, taskDone).size > 0) {
+    if(Number(taskDone) === 0 && this.getTaskByPriority(priority, category, taskDone).size > 0) {
       tableContent = 
         this.getTaskByPriority(priority, category, taskDone).map(task => 
           <NotDoneTask
@@ -60,7 +60,7 @@ export default class TasksTable extends Component {
             doneTask={this.props.doneTask}
             deleteTask={this.props.deleteTask}
           />)
-    } else if(Number(taskDone) && this.getTaskByPriority(priority, category, taskDone).size > 0) {
+    } else if(Number(taskDone) === 1 && this.getTaskByPriority(priority, category, taskDone).size > 0) {
       tableContent = 
         this.getTaskByPriority(priority, category, taskDone).map(task => 
           <DoneTask key={task.get('id')} task={task} />)

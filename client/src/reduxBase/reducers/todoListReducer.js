@@ -20,7 +20,7 @@ const initialState = new Map({
     new Map({
       id: 3,
       text: 'Lorem Ipsum используемый в печати и вэб-дизайне. LoremLorem Ipsum - это текст-"рыба", часто используемый в печати и вэб-дизайне. LoremLorem Ipsum - это текст-"рыба", часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной "рыбой" для текстов на латинице с начала XVI века.',
-      isDone: 0,
+      isDone: 1,
       priority: '3',
       category: 'day',
     }),
@@ -34,7 +34,7 @@ const initialState = new Map({
     new Map({
       id: 5,
       text: 'Xасто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной "рыбой" для текстов на латинице с начала XVI века.',
-      isDone: 0,
+      isDone: 1,
       priority: '2',
       category: 'day',
     }),
@@ -72,7 +72,7 @@ export default function todoListReducer(state = initialState, action) {
           return state;
         }
         return state.setIn(['tasks', taskIndex], state.get('tasks').get(taskIndex).merge({
-          isDone: true,
+          isDone: 1,
         }));
 
       case actionTypes.DELETE_TASK:

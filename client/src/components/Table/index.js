@@ -49,26 +49,32 @@ export default class TasksTable extends Component {
   render() {
     const { tasksList } = this.props;
     const { priority, category, taskDone } = this.state;
+    let tableContent;
+    if(!Number(taskDone) && this.getTaskByPriority(priority, category, taskDone).size > 0) {
+      tableContent = 
+        this.getTaskByPriority(priority, category, taskDone).map(task => 
+          <NotDoneTask
+            key={task.get('id')}
+            task={task}
+            showTaskEditModal={this.props.showTaskEditModal}
+            doneTask={this.props.doneTask}
+            deleteTask={this.props.deleteTask}
+          />)
+    } else if(Number(taskDone) && this.getTaskByPriority(priority, category, taskDone).size > 0) {
+      tableContent = 
+        this.getTaskByPriority(priority, category, taskDone).map(task => 
+          <DoneTask key={task.get('id')} task={task} />)
+    } else{
+        tableContent = <NoTasksText />
+    }
+
     return (
       <Paper className="paper">
         <AddTaskBtn showTaskAddModal={this.props.showTaskAddModal} />
         <div className="table-wrapper">
-          <NoTasksText />
           <Table className="table">
             <TableBody>
-              {!Number(taskDone) ? 
-                this.getTaskByPriority(priority, category, taskDone).map(task => 
-                  <NotDoneTask
-                    key={task.get('id')}
-                    task={task}
-                    showTaskEditModal={this.props.showTaskEditModal}
-                    doneTask={this.props.doneTask}
-                    deleteTask={this.props.deleteTask}
-                  />)
-              :
-                this.getTaskByPriority(priority, category, taskDone).map(task => 
-                  <DoneTask key={task.get('id')} task={task} />)
-              }
+             {tableContent}
             </TableBody>
           </Table>
         </div>

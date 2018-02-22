@@ -46,9 +46,9 @@ class EditModal extends React.Component {
 
     this.handleChangeInput = (event) => {
       if(event.target.value.length > 0) {
-        this.setState({ inputValue: event.target.value })
+        this.setState({ taskText: event.target.value })
       } else {
-        this.setState({ inputValue: '' })
+        this.setState({ taskText: '' })
       }
     }
 

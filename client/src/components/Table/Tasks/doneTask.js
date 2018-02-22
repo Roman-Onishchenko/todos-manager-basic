@@ -20,13 +20,11 @@ export default function DoneTask(props) {
         <p className="paragraph paragraph_success-text">{task.get('text')}</p>
       </TableCell>
       <TableCell className="table__iconcell">
-      </TableCell>
-      <TableCell className="table__iconcell">
-        <IconButton>
-          <PriorityIcon className={`icon_${task.get('priority')}-priority`} />
-        </IconButton>
-      </TableCell>
-      <TableCell className="table__iconcell">
+        <Tooltip id="tooltip-icon" title="Priority">
+          <IconButton>
+            <PriorityIcon className={`icon_${task.get('priority')}-priority`} />
+          </IconButton>
+        </Tooltip>
       </TableCell>
     </TableRow>
   );

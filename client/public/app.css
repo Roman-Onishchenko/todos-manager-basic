@@ -2,7 +2,7 @@ body{
   background-color: lightgrey;
 }
 .table__iconcell:last-child {
-   padding-right: 10px !important;
+   padding-right: 5px !important;
 }
 legend > span {
   display: none;
@@ -22,12 +22,14 @@ legend > span {
   min-width: 500px;
 }
 .table__iconcell{
+  text-align: center !important;
   padding: 10px 0 10px 0 !important;
   background-color: #ECEFF1;
+  width: 60px;
 }
 .table__maincell{
   padding: 10px 5px 10px 15px !important;
-  min-width: 275px;
+  min-width: 270px;
   font-family: Rubik;
   font-weight: 500;
   font-size: 14px !important;
@@ -45,6 +47,7 @@ legend > span {
 }
 .paragraph_success-text{
   color: #1B5E20;
+  margin: 0;
 }
 .button {
   display: block !important;
@@ -121,4 +124,10 @@ legend > span {
 .button_grey_margin-right {
   margin: 0 !important;
   margin-right: 25px !important;
+}
+
+@media only screen and (max-width: 950px) {
+  .table__iconcell{
+    width: 50px;
+  }
 }

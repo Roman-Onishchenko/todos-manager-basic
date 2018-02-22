@@ -47,6 +47,7 @@ export default class TasksTable extends Component {
 
   render() {
     const { tasksList } = this.props;
+    console.log('tasksList', tasksList.toJS());
     const { priority, category, taskDone } = this.state;
     let tableContent;
     if(Number(taskDone) === 0 && this.getTaskByPriority(priority, category, taskDone).size > 0) {

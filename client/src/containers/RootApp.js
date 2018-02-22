@@ -16,9 +16,11 @@ class RootApp extends Component {
     showTaskAddModal: PropTypes.func,
     showTaskEditModal: PropTypes.func,
     hideTaskModal: PropTypes.func,
+    clearTasksList: PropTypes.func,
   }
   
   render() {
+        console.log(this.props.tasksReducer.toJS());
     const tasksList = this.props.tasksReducer.get('tasks');
     const modalType = this.props.tasksReducer.get('modalType');
     const activeTaskId = this.props.tasksReducer.get('taskId');
@@ -49,6 +51,7 @@ class RootApp extends Component {
           showTaskEditModal={this.props.showTaskEditModal}
           deleteTask={this.props.deleteTask}
           doneTask={this.props.doneTask}
+          clearTasksList={this.props.clearTasksList}
         />
       </div>
     );

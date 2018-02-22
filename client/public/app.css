@@ -53,7 +53,6 @@ legend > span {
   color: white !important;
 }
 .button_grey {
-  margin: 0 !important;
   background-color: #607D8B !important;
 }
 .button_grey:hover { 
@@ -117,4 +116,8 @@ legend > span {
   margin: 20px auto;
   display: flex;
   justify-content: center;
+}
+.button_grey_margin-right {
+  margin: 0 !important;
+  margin-right: 25px !important;
 }

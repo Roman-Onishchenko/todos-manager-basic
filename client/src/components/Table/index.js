@@ -74,13 +74,13 @@ export default class TasksTable extends Component {
         <div className="table-wrapper">
           <Table className="table">
             <TableBody>
-             {tableContent}
+              {tableContent}
             </TableBody>
           </Table>
         </div>
         <div className="buttons-container">
           <FilterCategoriesBtn filtersOpened={this.state.filtersOpened} changeFiltersVisibility={this.changeFiltersVisibility} />
-          <ClearTasksBtn />
+          <ClearTasksBtn clearTasksList={this.props.clearTasksList} />
         </div>
         {this.state.filtersOpened && 
           <FilterCategory 

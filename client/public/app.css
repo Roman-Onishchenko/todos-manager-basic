@@ -53,24 +53,27 @@ legend > span {
   color: white !important;
 }
 .button_grey {
+  margin: 0 !important;
+  margin-right: 25px !important;
   background-color: #607D8B !important;
 }
 .button_grey:hover { 
   background-color: #78909C !important;
 }
 .button_delete-tasks {
+  margin: 0 !important;
   background-color: #C62828 !important;
 }
 .button_delete-tasks:hover { 
   background-color: #E53935 !important;
 }
-.icon_high-priority {
+.icon_1-priority {
   color: #C62828
 }
-.icon_middle-priority {
+.icon_2-priority {
   color: #FF6D00
 }
-.icon_low-priority {
+.icon_3-priority {
   color: #FFB300
 }
 .tableImg {
@@ -82,7 +85,13 @@ legend > span {
   justify-content: center;
   align-items: center;
 }
+.no-tasks {
+  color: #3f51b5;
+  font-size: 1.25em;
+}
 .radios-wrapper {
+  max-width: 1300px;
+  margin: auto;
   display: flex;
   flex-flow: row wrap;
   justify-content: space-around;
@@ -104,4 +113,9 @@ legend > span {
   justify-content: space-between;
   width: 50%;
   margin: auto;
+}
+.buttons-container {
+  margin: 20px auto;
+  display: flex;
+  justify-content: center;
 }

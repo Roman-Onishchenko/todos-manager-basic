@@ -10,7 +10,6 @@ import FilterCategoriesBtn from './Buttons/filterCategoriesBtn';
 import ClearTasksBtn from './Buttons/clearTasksBtn';
 import NotDoneTask  from './Tasks/notDoneTask';
 import DoneTask  from './Tasks/doneTask';
-import NoTasksText  from './noTasksText';
 
 
 export default class TasksTable extends Component {
@@ -64,8 +63,8 @@ export default class TasksTable extends Component {
       tableContent = 
         this.getTaskByPriority(priority, category, taskDone).map(task => 
           <DoneTask key={task.get('id')} task={task} />)
-    } else{
-        tableContent = <NoTasksText />
+    } else {
+      tableContent = <EmptyTableImg />
     }
 
     return (
@@ -80,7 +79,7 @@ export default class TasksTable extends Component {
         </div>
         <div className="buttons-container">
           <FilterCategoriesBtn filtersOpened={this.state.filtersOpened} changeFiltersVisibility={this.changeFiltersVisibility} />
-          <ClearTasksBtn clearTasksList={this.props.clearTasksList} />
+          <ClearTasksBtn clearTasksList={this.props.clearTasksList}/>
         </div>
         {this.state.filtersOpened && 
           <FilterCategory 

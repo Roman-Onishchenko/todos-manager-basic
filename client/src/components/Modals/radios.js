@@ -26,7 +26,7 @@ export default function Radios(props) {
           aria-label="taskPriority"
           name="priorityValue"
           className="radio-group"
-          value={ props.priorityValue}
+          value={props.priorityValue}
           onChange={props.handleChangeRadio}
         >
           <FormControlLabel value="1" control={<Radio />} label="High" />

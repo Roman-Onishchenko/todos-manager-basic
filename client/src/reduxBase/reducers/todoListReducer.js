@@ -101,7 +101,8 @@ export default function todoListReducer(state = initialState, action) {
         });
 
       case actionTypes.CLEAR_TASKS_LIST:
-        // return state.delete('tasks');
+        return state.set('tasks', new List());
+        
       default:
         return state;
     }

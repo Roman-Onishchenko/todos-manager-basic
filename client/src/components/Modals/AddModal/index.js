@@ -39,7 +39,7 @@ class AddModal extends React.Component {
   state = {
     inputValue: '',
     timeValue: 'day',
-    priorityValue: 'middle',
+    priorityValue: '2',
   };
 
   handleChangeInput = (event) => {
@@ -59,7 +59,7 @@ class AddModal extends React.Component {
       new Map({
         id: Date.now(),
         text: this.state.inputValue,
-        isDone: false,
+        isDone: 0,
         priority: this.state.priorityValue,
         category:this.state.timeValue,
     }));

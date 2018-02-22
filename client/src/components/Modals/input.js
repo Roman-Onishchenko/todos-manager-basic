@@ -6,12 +6,13 @@ export default function TaskInput(props) {
   const { classes } = props;
     return (
       <TextField
+        onChange={props.handleChangeInput}
         id="full-width"
-        label="Label"
+        label={props.label}
         InputLabelProps={{
           shrink: true,
         }}
-        placeholder="Module build failed"
+        placeholder={props.taskText || 'Task text'}
         fullWidth
         multiline
         margin="normal"

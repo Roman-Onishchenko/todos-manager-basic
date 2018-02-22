@@ -21,7 +21,7 @@ class RootApp extends Component {
   render() {
     const tasksList = this.props.tasksReducer.get('tasks');
     const modalType = this.props.tasksReducer.get('modalType');
-    const activeTaskId = this.props.tasksReducer.get('tasks').get('taskId');
+    const activeTaskId = this.props.tasksReducer.get('taskId');
     let activeTask;
     if (activeTaskId) {
       activeTask = this.props.tasksReducer.get('tasks').find(task => task.get('id') === activeTaskId);

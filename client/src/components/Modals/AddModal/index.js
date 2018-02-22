@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import Modal from 'material-ui/Modal';
 import Typography from 'material-ui/Typography';
+import { Map } from 'immutable';
 
 import TaskInput from '../input';
 import Buttons from '../buttons';
@@ -35,10 +36,38 @@ const styles = theme => ({
 });
 
 class AddModal extends React.Component {
-  
+  state = {
+    inputValue: '',
+    timeValue: 'day',
+    priorityValue: 'middle',
+  };
+
+  handleChangeInput = (event) => {
+    if(event.target.value.length > 0) {
+      this.setState({ inputValue: event.target.value })
+    } else {
+      this.setState({ inputValue: '' })
+    }
+  }
+
+  handleChangeRadio = (event) => {
+    this.setState({ [event.target.name]: event.target.value })
+  }
+
+  handleSaveTask = () => {
+    this.props.addTask(
+      new Map({
+        id: Date.now(),
+        text: this.state.inputValue,
+        isDone: false,
+        priority: this.state.priorityValue,
+        category:this.state.timeValue,
+    }));
+    this.props.hideTaskModal();
+  }
+
   render() {
     const { classes } = this.props;
-
     return (
       <div>
         <Modal
@@ -50,9 +79,17 @@ class AddModal extends React.Component {
             <Typography className={classes.header} variant="title" id="modal-title">
               Add Task
             </Typography>
-            <TaskInput />
-            <Radios />
-            <Buttons hideTaskModal={this.props.hideTaskModal} />
+            <TaskInput handleChangeInput={this.handleChangeInput} label="Add task" />
+            <Radios 
+              handleChangeRadio={this.handleChangeRadio}
+              timeValue={this.state.timeValue}
+              priorityValue={this.state.priorityValue}
+            />
+            <Buttons 
+              hideTaskModal={this.props.hideTaskModal} 
+              handleSaveTask={this.handleSaveTask} 
+              readyToSave={this.state.inputValue.length > 0}
+            />
           </div>
         </Modal>
       </div>

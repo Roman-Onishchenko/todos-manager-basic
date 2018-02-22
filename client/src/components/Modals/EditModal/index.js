@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import Modal from 'material-ui/Modal';
 import Typography from 'material-ui/Typography';
+import { Map } from 'immutable';
 
 import TaskInput from '../input';
 import Buttons from '../buttons';
@@ -35,8 +36,42 @@ const styles = theme => ({
 });
 
 class EditModal extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      taskText: props.activeTask.get('text'),
+      timeValue: props.activeTask.get('category'),
+      priorityValue: props.activeTask.get('priority'),
+    };
+
+    this.handleChangeInput = (event) => {
+      if(event.target.value.length > 0) {
+        this.setState({ inputValue: event.target.value })
+      } else {
+        this.setState({ inputValue: '' })
+      }
+    }
+
+    this.handleChangeRadio = (event) => {
+      this.setState({ [event.target.name]: event.target.value })
+    }
+
+    this.handleSaveTask = () => {
+      const updatedTask = this.props.activeTask.merge(
+        new Map({
+          text: this.state.taskText,
+          priority: this.state.priorityValue,
+          category:this.state.timeValue,
+        })
+      );
+      const taskId = this.props.activeTask.get('id');
+      this.props.updateTask(updatedTask, taskId);
+      this.props.hideTaskModal();
+    }
+  }
+  
   render() {
-    const { classes } = this.props;
+    const { classes, activeTask } = this.props;
     return (
       <div>
         <Modal
@@ -48,9 +83,17 @@ class EditModal extends React.Component {
             <Typography className={classes.header} variant="title" id="modal-title">
               Edit Task
             </Typography>
-            <TaskInput />
-            <Radios />
-            <Buttons hideTaskModal={this.props.hideTaskModal} />
+            <TaskInput taskText={this.state.taskText} handleChangeInput={this.handleChangeInput} />
+            <Radios
+              handleChangeRadio={this.handleChangeRadio}
+              timeValue={this.state.timeValue}
+              priorityValue={this.state.priorityValue} 
+            />
+            <Buttons 
+              handleSaveTask={this.handleSaveTask}  
+              hideTaskModal={this.props.hideTaskModal} 
+              readyToSave 
+            />
           </div>
         </Modal>
       </div>

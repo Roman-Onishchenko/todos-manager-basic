@@ -11,7 +11,7 @@ export default function TaskInput(props) {
         InputLabelProps={{
           shrink: true,
         }}
-        placeholder={props.taskText || 'Task text'}
+        defaultValue={props.taskText || ''}
         fullWidth
         multiline
         margin="normal"

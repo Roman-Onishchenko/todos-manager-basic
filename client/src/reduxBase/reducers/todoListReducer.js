@@ -15,14 +15,14 @@ const initialState = new Map({
       text: 'Xасто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной "рыбой" для текстов на латинице с начала XVI века.',
       isDone: 0,
       priority: '2',
-      category: 'week',
+      category: 'day',
     }),
     new Map({
       id: 3,
       text: 'Lorem Ipsum используемый в печати и вэб-дизайне. LoremLorem Ipsum - это текст-"рыба", часто используемый в печати и вэб-дизайне. LoremLorem Ipsum - это текст-"рыба", часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной "рыбой" для текстов на латинице с начала XVI века.',
-      isDone: 1,
+      isDone: 0,
       priority: '3',
-      category: 'month',
+      category: 'day',
     }),
      new Map({
       id: 4,
@@ -34,12 +34,19 @@ const initialState = new Map({
     new Map({
       id: 5,
       text: 'Xасто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной "рыбой" для текстов на латинице с начала XVI века.',
-      isDone: 1,
+      isDone: 0,
       priority: '2',
       category: 'day',
     }),
     new Map({
       id: 6,
+      text: 'Lorem Ipsum используемый в печати и вэб-дизайне. LoremLorem Ipsum - это текст-"рыба", часто используемый в печати и вэб-дизайне. LoremLorem Ipsum - это текст-"рыба", часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной "рыбой" для текстов на латинице с начала XVI века.',
+      isDone: 0,
+      priority: '3',
+      category: 'day',
+    }),
+    new Map({
+      id: 7,
       text: 'Lorem Ipsum используемый в печати и вэб-дизайне. LoremLorem Ipsum - это текст-"рыба", часто используемый в печати и вэб-дизайне. LoremLorem Ipsum - это текст-"рыба", часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной "рыбой" для текстов на латинице с начала XVI века.',
       isDone: 0,
       priority: '3',

@@ -19,13 +19,21 @@ legend > span {
   overflow-x: auto;
 }
 .table{
+  margin: auto;
   min-width: 500px;
+  max-width: 1300px;
 }
 .table__iconcell{
   text-align: center !important;
-  padding: 10px 0 10px 0 !important;
+  padding: 5px 0 !important;
   background-color: #ECEFF1;
   width: 60px;
+}
+.table__iconcell_middle {
+  width: 20px;
+}
+.empty-tablecell {
+  border-bottom: none !important;
 }
 .table__maincell{
   padding: 10px 5px 10px 15px !important;
@@ -142,6 +150,16 @@ a {
 .button_grey_margin-right {
   margin: 0 !important;
   margin-right: 25px !important;
+}
+.greeting-message {
+  width: 200px;
+  position: absolute;
+  text-align: center;
+  color: black;
+}
+.auth-login {
+  color: brown;
+  font-size: 1.1em;
 }
 
 @media only screen and (max-width: 950px) {

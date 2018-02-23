@@ -11,7 +11,7 @@ import FilterCategoriesBtn from './Buttons/filterCategoriesBtn';
 import ClearTasksBtn from './Buttons/clearTasksBtn';
 import NotDoneTask  from './Tasks/notDoneTask';
 import DoneTask  from './Tasks/doneTask';
-
+import GreetingMessage from './greetingMessage';
 
 export default class TasksTable extends Component {
   static propTypes = {
@@ -72,11 +72,12 @@ export default class TasksTable extends Component {
         this.getTaskByPriority(priority, category, taskDone).map(task => 
           <DoneTask key={task.get('id')} task={task} />)
     } else {
-      tableContent = <TableRow><TableCell><EmptyTableImg /></TableCell></TableRow>
+      tableContent = <TableRow><TableCell className="empty-tablecell"><EmptyTableImg /></TableCell></TableRow>
     }
 
     return (
       <Paper className="paper">
+        <GreetingMessage />
         <AddTaskBtn showTaskAddModal={this.props.showTaskAddModal} />
         <div className="table-wrapper">
           <Table className="table">

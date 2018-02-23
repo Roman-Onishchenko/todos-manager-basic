@@ -1,9 +1,27 @@
-import { call, put, takeEvery, takeLatest } from 'redux-saga/effects';
-import { push } from 'connected-react-router';
-import { List, Map } from 'immutable';
+import { call, takeEvery, cancel } from 'redux-saga/effects';
 
-function* mySaga() {
-  // yield takeEvery(types.FETCH_NEWS, fetchNews);
+import {
+  CREATE_TASK,
+  DELETE_TASK,
+  UPDATE_TASK,
+} from '../reduxBase/constants';
+
+import loadTasks from './tasks/loadTasks';
+import createTask from './tasks/createTask';
+import deleteTask from './tasks/deleteTask';
+import updateTask from './tasks/updateTask';
+
+export function* tasksWatchers() {
+  yield call(loadTasks);
+
+  const createTaskWatcher = yield takeEvery(CREATE_TASK, createTask);
+  const deleteTaskWatcher = yield takeEvery(DELETE_TASK, deleteTask);
+  const updateTaskWatcher = yield takeEvery(UPDATE_TASK, updateTask);
+
+  yield cancel(createTaskWatcher);
+  yield cancel(deleteTaskWatcher);
+  yield cancel(updateTaskWatcher);
 }
 
-export default mySaga;
+export default tasksWatchers;
+

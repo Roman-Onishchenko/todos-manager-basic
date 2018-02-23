@@ -4,11 +4,13 @@ export const SET_TASKS = 'SET_TASKS';
 
 export const ADD_TASK = 'ADD_TASK';
 
+export const CREATE_TASK = 'CREATE_TASK';
+
 export const UPDATE_TASK = 'UPDATE_TASK';
 
-export const DONE_TASK = 'DONE_TASK';
-
 export const DELETE_TASK = 'DELETE_TASK';
+
+export const DONE_TASK = 'DONE_TASK';
 
 export const CLEAR_TASKS_LIST = 'CLEAR_TASKS_LIST';
 
@@ -23,5 +25,3 @@ export const USER_REGISTER = 'USER_REGISTER';
 export const USER_AUTH_ATTEMPT = 'USER_AUTH_ATTEMPT';
 
 export const USER_AUTHORIZE = 'USER_AUTHORIZE';
-
-

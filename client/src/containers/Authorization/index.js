@@ -68,7 +68,7 @@ class Authorization extends React.Component {
 
   render() {
     const { classes } = this.props;
-    const { userName, userLogin, userEmail, userPass } = this.state;
+    const { userEmail, userPass } = this.state;
     const active = userEmail && userPass;
     const currentPath = this.props.match.path;
     return (

@@ -30,7 +30,7 @@ export default function FilterCategory(props) {
           onChange={props.changeFilterCriteria}
         >
           <FormControlLabel value="1" control={<Radio />} label="High" />
-          <FormControlLabel value="2" control={<Radio />} label="Medium" />
+          <FormControlLabel value="2" control={<Radio />} label="Middle" />
           <FormControlLabel value="3" control={<Radio />} label="Low" />
           <FormControlLabel value="all" control={<Radio />} label="All" />
         </RadioGroup>

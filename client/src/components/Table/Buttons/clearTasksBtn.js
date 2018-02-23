@@ -6,7 +6,7 @@ export default function ClearTasks(props) {
   return (
     <Button 
 	    variant="raised" 
-	    className="button button_delete-tasks"
+	    className="button button_red"
 	    onClick={() => props.clearTasksList(props.taskDone)}
     >
       Clear Tasks

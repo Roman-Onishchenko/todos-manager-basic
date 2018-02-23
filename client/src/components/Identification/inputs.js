@@ -16,78 +16,88 @@ const styles = theme => ({
     marginRight: theme.spacing.unit,
     width: 200,
   },
-  menu: {
-    width: 200,
-  },
 });
 
-class Inputs extends React.Component {
-  state = {
-    name: 'Cat in the Hat',
-    age: '',
-    multiline: 'Controlled',
-    currency: 'EUR',
-  };
-
-  handleChange = name => event => {
-    this.setState({
-      [name]: event.target.value,
-    });
-  };
-
- // <TextField
- //          error
- //          id="error"
- //          label="Error"
- //          defaultValue="Hello World"
- //          className={classes.textField}
- //          margin="normal"
- //        />
-
-  render() {
-    const { classes } = this.props;
-
-    return (
+function Inputs(props) {
+  const { classes, currentPath } = props;
+  let inputs;
+  if(currentPath === '/authorization') {
+    inputs = 
       <form className={classes.container} noValidate autoComplete="off">
         <TextField
+          onChange={props.handleChangeInput}
+          name="userEmail"
           required
-          id="required"
-          label="Required"
-          defaultValue="Hello World"
+          label="Email"
+          placeholder="mail@.com"
           className={classes.textField}
           margin="normal"
+          error={false}
         />
-
         <TextField
+          onChange={props.handleChangeInput}
+          name="userPass"
           required
-          id="required"
-          label="Required"
-          defaultValue="Hello World"
-          className={classes.textField}
-          margin="normal"
-        />
-
-        <TextField
-          required
-          id="required"
-          label="Required"
-          defaultValue="Hello World"
-          className={classes.textField}
-          margin="normal"
-        />
-
-        <TextField
           id="password"
           label="Password"
           className={classes.textField}
           type="password"
           autoComplete="current-password"
           margin="normal"
+          error={false}
         />
-
       </form>
-    );
+  } else {
+    inputs =
+      <form className={classes.container} noValidate autoComplete="off">
+        <TextField
+          onChange={props.handleChangeInput}
+          name="userName"
+          required
+          label="Name"
+          placeholder="Name"
+          className={classes.textField}
+          margin="normal"
+          error={false}
+        />
+        <TextField
+          onChange={props.handleChangeInput}
+          name="userLogin"
+          required
+          label="Login"
+          placeholder="Login"
+          className={classes.textField}
+          margin="normal"
+          error={false}
+        />
+        <TextField
+          onChange={props.handleChangeInput}
+          name="userEmail"
+          required
+          label="Email"
+          placeholder="mail@.com"
+          className={classes.textField}
+          margin="normal"
+          error={false}
+        />
+        <TextField
+          onChange={props.handleChangeInput}
+          name="userPass"
+          required
+          id="password"
+          label="Password"
+          className={classes.textField}
+          type="password"
+          autoComplete="current-password"
+          margin="normal"
+          error={false}
+        />
+      </form>
   }
+
+  return (
+    inputs
+  );
 }
 
 Inputs.propTypes = {

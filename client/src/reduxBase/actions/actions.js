@@ -67,3 +67,24 @@ export function hideTaskModal() {
     type: actionTypes.HIDE_TASK_MODAL,
   };
 }
+
+export function userRegister(user) {
+  return {
+    type: actionTypes.USER_REGISTER,
+    user,
+  };
+}
+
+export function userAuthAttempt(user) {
+  return {
+    type: actionTypes.USER_AUTH_ATTEMPT,
+    user,
+  };
+}
+
+export function userAuthorize(userId) {
+  return {
+    type: actionTypes.USER_AUTHORIZE,
+    userId,
+  };
+}

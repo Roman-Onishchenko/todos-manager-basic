@@ -56,17 +56,29 @@ legend > span {
   margin: 18px auto !important;
   color: white !important;
 }
+a {
+  text-decoration: none;
+  color: inherit;
+}
 .button_grey {
-  background-color: #607D8B !important;
+  background-color: white !important;
+  color: black !important;
 }
 .button_grey:hover { 
-  background-color: #78909C !important;
+  background-color: #F5F5F5 !important;
 }
-.button_delete-tasks {
+.button_white {
+  background-color: white !important;
+  color: black !important;
+}
+.button_white:hover { 
+  background-color: #F5F5F5 !important;
+}
+.button_red {
   margin: 0 !important;
-  background-color: #C62828 !important;
+  background-color: brown !important;
 }
-.button_delete-tasks:hover { 
+.button_red:hover { 
   background-color: #E53935 !important;
 }
 .icon_1-priority {
@@ -118,7 +130,7 @@ legend > span {
 }
 .register-buttons {
   display: flex;
-  width: 70%;
+  width: 60%;
   justify-content: space-between;
   margin: auto;
 }

@@ -6,8 +6,8 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import reducer from './reduxBase/reducers/index';
 import RootApp from './containers/RootApp';
-import Registration from './components/Identification/Registration/';
-import Authorization from './components/Identification/Authorization/';
+import Registration from './containers/Registration/';
+import Authorization from './containers/Authorization/';
 
 const store = createStore(reducer, window.__REDUX_DEVTOOLS_EXTENSION__ &&
  window.__REDUX_DEVTOOLS_EXTENSION__());

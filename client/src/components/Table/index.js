@@ -95,7 +95,7 @@ export default class TasksTable extends Component {
             category={this.state.category}
             taskDone={this.state.taskDone}
             changeFilterCriteria={this.changeFilterCriteria}
-        />}
+          />}
       </Paper>
     );
   }

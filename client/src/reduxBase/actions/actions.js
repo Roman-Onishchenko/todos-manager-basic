@@ -42,9 +42,10 @@ export function deleteTask(taskId) {
   };
 }
 
-export function clearTasksList() {
+export function clearTasksList(taskDone) {
   return {
     type: actionTypes.CLEAR_TASKS_LIST,
+    taskDone,
   };
 }
 

@@ -4,6 +4,7 @@ import Tooltip from 'material-ui/Tooltip';
 import IconButton from 'material-ui/IconButton';
 import PriorityIcon from 'material-ui-icons/Warning';
 import SuccessIcon from 'material-ui-icons/CheckBox';
+import PropTypes from 'prop-types';
 
 export default function DoneTask(props) {
 	const { task } = props;
@@ -29,3 +30,7 @@ export default function DoneTask(props) {
     </TableRow>
   );
 }
+
+DoneTask.propTypes = {
+  task: PropTypes.object,
+};

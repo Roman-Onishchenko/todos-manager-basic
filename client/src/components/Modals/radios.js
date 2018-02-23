@@ -37,3 +37,9 @@ export default function Radios(props) {
     </div>
   );
 }
+
+Radios.propTypes = {
+  timeValue: PropTypes.string,
+  priorityValue: PropTypes.string,
+  handleChangeRadio: PropTypes.func,
+};

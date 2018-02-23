@@ -10,12 +10,14 @@ import EditModal from '../components/Modals/EditModal/';
 
 class RootApp extends Component {
   static propTypes = {
-    tasksList: PropTypes.object,
+    tasksReducer: PropTypes.object,
     addTask: PropTypes.func,
     updateTask: PropTypes.func,
     showTaskAddModal: PropTypes.func,
     showTaskEditModal: PropTypes.func,
     hideTaskModal: PropTypes.func,
+    deleteTask: PropTypes.func,
+    doneTask: PropTypes.func,
     clearTasksList: PropTypes.func,
   }
   

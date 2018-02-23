@@ -51,3 +51,10 @@ export default function FilterCategory(props) {
     </div>
   );
 }
+
+FilterCategory.propTypes = {
+  category: PropTypes.string,
+  priority: PropTypes.string,
+  taskDone: PropTypes.string,
+  changeFilterCriteria: PropTypes.func,
+};

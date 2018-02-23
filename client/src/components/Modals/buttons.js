@@ -1,9 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import Button from 'material-ui/Button';
 
 export default function Buttons(props) {
-  const { classes } = props;
   return (
     <div className="modal-buttons">
       <Button 
@@ -26,3 +25,9 @@ export default function Buttons(props) {
     </div>
   );
 }
+
+Buttons.propTypes = {
+  readyToSave: PropTypes.bool,
+  handleSaveTask: PropTypes.func,
+  hideTaskModal: PropTypes.func,
+};

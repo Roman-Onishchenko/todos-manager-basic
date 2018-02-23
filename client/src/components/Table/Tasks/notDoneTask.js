@@ -6,6 +6,7 @@ import PriorityIcon from 'material-ui-icons/Warning';
 import DeleteIcon from 'material-ui-icons/DeleteForever';
 import EditIcon from 'material-ui-icons/Dvr';
 import SuccessIcon from 'material-ui-icons/CheckBox';
+import PropTypes from 'prop-types';
 
 export default function NotDoneTask(props) {
 	const { task } = props;
@@ -43,3 +44,10 @@ export default function NotDoneTask(props) {
     </TableRow>
   );
 }
+
+NotDoneTask.propTypes = {
+  task: PropTypes.object,
+  doneTask: PropTypes.func,
+  showTaskEditModal: PropTypes.func,
+  deleteTask: PropTypes.func,
+};

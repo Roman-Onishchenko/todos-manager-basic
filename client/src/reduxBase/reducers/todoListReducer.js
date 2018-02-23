@@ -101,7 +101,7 @@ export default function todoListReducer(state = initialState, action) {
         });
 
       case actionTypes.CLEAR_TASKS_LIST:
-        return state.set('tasks', new List());
+        return state.set('tasks', state.get('tasks').filter(task => task.get('isDone') !== Number(action.taskDone)));
         
       default:
         return state;

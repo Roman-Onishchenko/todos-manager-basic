@@ -36,6 +36,14 @@ const styles = theme => ({
 });
 
 class EditModal extends React.Component {
+  static propTypes = {
+    activeTask: PropTypes.object,
+    updateTask: PropTypes.func,
+    hideTaskModal: PropTypes.func,
+    classes: PropTypes.object.isRequired,
+    open: PropTypes.bool,
+  }
+
   constructor(props) {
     super(props);
     this.state = {
@@ -71,7 +79,7 @@ class EditModal extends React.Component {
   }
   
   render() {
-    const { classes, activeTask } = this.props;
+    const { classes } = this.props;
     return (
       <div>
         <Modal
@@ -100,10 +108,6 @@ class EditModal extends React.Component {
     );
   }
 }
-
-EditModal.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
 
 const EditModallWrapped = withStyles(styles)(EditModal);
 

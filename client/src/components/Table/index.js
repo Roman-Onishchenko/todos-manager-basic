@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Table, { TableBody  } from 'material-ui/Table';
 import Paper from 'material-ui/Paper';
+import { TableCell, TableRow } from 'material-ui/Table';
 
 import FilterCategory from './filterCategory';
 import EmptyTableImg from './emptyTableImg';
@@ -13,6 +14,14 @@ import DoneTask  from './Tasks/doneTask';
 
 
 export default class TasksTable extends Component {
+  static propTypes = {
+    tasksList: PropTypes.object,
+    clearTasksList: PropTypes.func,
+    showTaskAddModal: PropTypes.func,
+    doneTask: PropTypes.func,
+    deleteTask: PropTypes.func,
+  }
+
   state = {
     filtersOpened: true,
     priority: 'all',
@@ -32,22 +41,20 @@ export default class TasksTable extends Component {
 
   getTaskByPriority = (priority, category, taskDone) => {
     if(priority === 'all') {
-      return this.props.tasksList.
-        filter(task => task.get('category') === category).
-        filter(task => task.get('isDone') === Number(taskDone)).
-        sort((taskA, taskB) => taskA.get("priority") - taskB.get("priority"))
+      return this.props.tasksList.filter(
+        task => task.get('category') === category).filter(
+        task => task.get('isDone') === Number(taskDone)).sort(
+        (taskA, taskB) => taskA.get("priority") - taskB.get("priority"))
     } else {
-      return this.props.tasksList.
-        filter(task => task.get('priority') === priority).
-        filter(task => task.get('category') === category).
-        filter(task => task.get('isDone') === Number(taskDone)).
-        sort((taskA, taskB) => taskA.get("priority") - taskB.get("priority"))
+      return this.props.tasksList.filter(
+        task => task.get('priority') === priority).filter(
+        task => task.get('category') === category).filter(
+        task => task.get('isDone') === Number(taskDone)).sort(
+        (taskA, taskB) => taskA.get("priority") - taskB.get("priority"))
     }
   }
 
   render() {
-    const { tasksList } = this.props;
-    console.log('tasksList', tasksList.toJS());
     const { priority, category, taskDone } = this.state;
     let tableContent;
     if(Number(taskDone) === 0 && this.getTaskByPriority(priority, category, taskDone).size > 0) {
@@ -65,7 +72,7 @@ export default class TasksTable extends Component {
         this.getTaskByPriority(priority, category, taskDone).map(task => 
           <DoneTask key={task.get('id')} task={task} />)
     } else {
-      tableContent = <EmptyTableImg />
+      tableContent = <TableRow><TableCell><EmptyTableImg /></TableCell></TableRow>
     }
 
     return (
@@ -80,7 +87,7 @@ export default class TasksTable extends Component {
         </div>
         <div className="buttons-container">
           <FilterCategoriesBtn filtersOpened={this.state.filtersOpened} changeFiltersVisibility={this.changeFiltersVisibility} />
-          <ClearTasksBtn clearTasksList={this.props.clearTasksList}/>
+          <ClearTasksBtn clearTasksList={this.props.clearTasksList} taskDone={taskDone} />
         </div>
         {this.state.filtersOpened && 
           <FilterCategory 
@@ -93,7 +100,3 @@ export default class TasksTable extends Component {
     );
   }
 }
-
-TasksTable.propTypes = {
-  tasksList: PropTypes.object,
-};

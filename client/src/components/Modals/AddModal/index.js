@@ -36,6 +36,13 @@ const styles = theme => ({
 });
 
 class AddModal extends React.Component {
+  static propTypes = {
+    open: PropTypes.bool,
+    addTask: PropTypes.func,
+    hideTaskModal: PropTypes.func,
+    classes: PropTypes.object.isRequired,
+  }
+
   state = {
     inputValue: '',
     timeValue: 'day',
@@ -96,10 +103,6 @@ class AddModal extends React.Component {
     );
   }
 }
-
-AddModal.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
 
 const AddModallWrapped = withStyles(styles)(AddModal);
 

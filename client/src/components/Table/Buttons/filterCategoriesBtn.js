@@ -1,5 +1,6 @@
 import React from 'react';
 import Button from 'material-ui/Button';
+import PropTypes from 'prop-types';
 
 export default function FilterCategoriesBtn(props) {
   return (
@@ -8,3 +9,8 @@ export default function FilterCategoriesBtn(props) {
     </Button>
   );
 }
+
+FilterCategoriesBtn.propTypes = {
+  changeFiltersVisibility: PropTypes.func,
+  filtersOpened: PropTypes.bool,
+};

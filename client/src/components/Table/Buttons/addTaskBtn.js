@@ -1,5 +1,6 @@
 import React from 'react';
 import Button from 'material-ui/Button';
+import PropTypes from 'prop-types';
 
 export default function AddTaskBtn(props) {
   return (
@@ -13,3 +14,7 @@ export default function AddTaskBtn(props) {
     </Button>
   );
 }
+
+AddTaskBtn.propTypes = {
+  showTaskAddModal: PropTypes.func,
+};

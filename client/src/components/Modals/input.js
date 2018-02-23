@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import TextField from 'material-ui/TextField';
 
 export default function TaskInput(props) {
-  const { classes } = props;
     return (
       <TextField
         onChange={props.handleChangeInput}
@@ -19,3 +18,9 @@ export default function TaskInput(props) {
       />
     );
 }
+
+TaskInput.propTypes = {
+  taskText: PropTypes.string,
+  label: PropTypes.string,
+  handleChangeInput: PropTypes.func,
+};

@@ -2,6 +2,8 @@ export const GET_TASKS = 'GET_TASKS';
 
 export const SET_TASKS = 'SET_TASKS';
 
+export const SET_ERROR_MESSAGE = 'SET_ERROR_MESSAGE';
+
 export const ADD_TASK = 'ADD_TASK';
 
 export const CREATE_TASK = 'CREATE_TASK';

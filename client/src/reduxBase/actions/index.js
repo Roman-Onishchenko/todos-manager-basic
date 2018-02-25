@@ -13,6 +13,13 @@ export function setTasks(tasks) {
   };
 }
 
+export function setErrorMessage(message) {
+  return {
+    type: actionTypes.SET_ERROR_MESSAGE,
+    message,
+  };
+}
+
 export function addTask(task) {
   return {
     type: actionTypes.ADD_TASK,

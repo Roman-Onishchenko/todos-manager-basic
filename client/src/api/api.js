@@ -3,48 +3,48 @@ import { fromJS } from 'immutable';
 // const API_LINK = process.env.API_LINK;
 
 class Api {
-
   constructor(params = {}) {
     this.url = '';
     this.params = params;
 
-    this.save = ::this.save;
-    this.remove = ::this.remove;
-    this.getFetchParams = ::this.getFetchParams;
-    this.getHeaders = ::this.getHeaders;
-    this.getUrlBase = ::this.getUrlBase;
-    this.get = ::this.get;
-    this.errorHandler = ::this.errorHandler;
+    // this.save = ::this.save;
+    // this.remove = ::this.remove;
+    // this.getFetchParams = ::this.getFetchParams;
+    // this.getHeaders = ::this.getHeaders;
+    // this.getUrlBase = ::this.getUrlBase;
+    // this.get = ::this.get;
+    // this.errorHandler = ::this.errorHandler;
   }
 
-  get(url, params) {
+  get = (url, params) => {
     return new Promise((resolve, reject) => {
-      let link = this.getUrlBase() + url;
+      let link = '/tasks';
 
-      if (params) {
-        const query = serializeParams(params);
-        link = `${link}?${query}`;
-      }
+      // if (params) {
+      //   const query = serializeParams(params);
+      //   link = `${link}?${query}`;
+      // }
 
-      fetch(link, this.getFetchParams()).then((response) => {
+      fetch(link).then((response) => {
         if (!response.ok) {
           this.errorHandler(response, reject);
           return;
         }
-
-        response.json().then((jsonData) => {
-          resolve(fromJS(jsonData));
-        });
+        resolve(response);
+        // response.json().then((jsonData) => {
+        //   resolve(fromJS(jsonData));
+        // });
       }).catch((response) => this.errorHandler(response, reject));
     });
   }
 
-  // errorHandler(response, callback) {
-  //   callback(response);
-  //   if (response.status === 401) {
-  //     global.store.dispatch(logout());
-  //   }
-  // }
+  errorHandler = (response, callback) => {
+    console.log('errorHandler', response);
+    // callback(response);
+    // if (response.status === 401) {
+    //   global.store.dispatch(logout());
+    // }
+  }
 
   // getUrlBase() {
   //   return API_LINK + this.url;

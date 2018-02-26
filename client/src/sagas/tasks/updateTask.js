@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import { call, put, select } from 'redux-saga/effects';
 
-import Api from 'api/api';
+import Api from '../../api/api';
 
 import {
   setErrorMessage,

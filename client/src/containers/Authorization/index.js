@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import Modal from 'material-ui/Modal';
 import Typography from 'material-ui/Typography';
-import * as actions from '../../reduxBase/actions/actions';
+import * as actions from '../../reduxBase/actions/';
 import { Map } from 'immutable';
 
 import Inputs from '../../components/Identification/inputs';

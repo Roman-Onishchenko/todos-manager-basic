@@ -61,6 +61,7 @@ export default function todoListReducer(state = initialState, action) {
    let taskIndex;
     switch (action.type) {
       case actionTypes.SET_TASKS:
+        console.log('action.tasks', action.tasks);
         return state.set('tasks', action.tasks);
 
       case actionTypes.ADD_TASK:

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
 
-import * as actions from '../reduxBase/actions/actions';
+import * as actions from '../reduxBase/actions/';
 import TasksTable from '../components/Table/';
 import AddModal from '../components/Modals/AddModal/';
 import EditModal from '../components/Modals/EditModal/';

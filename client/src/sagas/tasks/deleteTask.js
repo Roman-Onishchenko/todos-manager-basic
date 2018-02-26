@@ -1,5 +1,5 @@
 import { put, call } from 'redux-saga/effects';
-import Api from 'api/api';
+import Api from '../../api/api';
 
 import { setErrorMessage } from '../../reduxBase/actions/';
 

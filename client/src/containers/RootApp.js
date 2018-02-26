@@ -12,6 +12,7 @@ class RootApp extends Component {
   static propTypes = {
     tasksReducer: PropTypes.object,
     addTask: PropTypes.func,
+    createTask: PropTypes.func,
     updateTask: PropTypes.func,
     showTaskAddModal: PropTypes.func,
     showTaskEditModal: PropTypes.func,
@@ -35,7 +36,7 @@ class RootApp extends Component {
           <AddModal
             open
             hideTaskModal={this.props.hideTaskModal}
-            addTask={this.props.addTask}
+            createTask={this.props.createTask}
           />
         }
         {modalType === 'editTask' &&

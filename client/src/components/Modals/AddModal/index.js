@@ -38,7 +38,7 @@ const styles = theme => ({
 class AddModal extends React.Component {
   static propTypes = {
     open: PropTypes.bool,
-    addTask: PropTypes.func,
+    createTask: PropTypes.func,
     hideTaskModal: PropTypes.func,
     classes: PropTypes.object.isRequired,
   }
@@ -62,7 +62,7 @@ class AddModal extends React.Component {
   }
 
   handleSaveTask = () => {
-    this.props.addTask(
+    this.props.createTask(
       new Map({
         id: Date.now(),
         text: this.state.inputValue,

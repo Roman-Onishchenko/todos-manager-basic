@@ -1,7 +1,7 @@
 body{
   background-color: lightgrey;
 }
-.table__iconcell:last-child {
+.d {
    padding-right: 5px !important;
 }
 legend > span {
@@ -23,6 +23,9 @@ legend > span {
   min-width: 500px;
   max-width: 1300px;
 }
+.table-row {
+  vertical-align: middle;
+}
 .table__iconcell{
   text-align: center !important;
   padding: 5px 0 !important;
@@ -37,12 +40,14 @@ legend > span {
 }
 .table__maincell{
   padding: 10px 5px 10px 15px !important;
-  min-width: 270px;
   font-family: Rubik;
   font-weight: 500;
   font-size: 14px !important;
   background-color: #F5F5F5;
   color: #37474F !important;
+}
+.table-maincell-not-done {
+  width: 90%;
 }
 .icon_success-icon {
   color: #558B2F;
@@ -165,5 +170,34 @@ a {
 @media only screen and (max-width: 950px) {
   .table__iconcell{
     width: 50px;
+  }
+  .table-row {
+    display: flex !important;
+    min-height: 48px;
+    height: auto;
+  }
+
+  .success-icon {
+    order: -1;
+  }
+
+  .table-maincell-not-done {
+    display: flex;
+    vertical-align: middle;
+    align-content: center;
+    align-items: center;
+  }
+
+  .a, .d {
+    margin-top: auto;
+    margin-left: -50px;
+  }
+
+  .b, .c {
+    margin-bottom: auto;
+    padding-bottom: 40px !important;
+  }
+  .c {
+    margin-right: 2px;
   }
 }

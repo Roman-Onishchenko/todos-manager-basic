@@ -1,4 +1,4 @@
-import { call, takeEvery, cancel } from 'redux-saga/effects';
+import { call, takeEvery } from 'redux-saga/effects';
 
 import {
   CREATE_TASK,
@@ -14,13 +14,9 @@ import updateTask from './tasks/updateTask';
 function* tasksWatchers() {
   yield call(loadTasks);
 
-  const createTaskWatcher = yield takeEvery(CREATE_TASK, createTask);
-  const deleteTaskWatcher = yield takeEvery(DELETE_TASK, deleteTask);
-  const updateTaskWatcher = yield takeEvery(UPDATE_TASK, updateTask);
-
-  // yield cancel(createTaskWatcher);
-  // yield cancel(deleteTaskWatcher);
-  // yield cancel(updateTaskWatcher);
+  yield takeEvery(CREATE_TASK, createTask);
+  yield takeEvery(DELETE_TASK, deleteTask);
+  yield takeEvery(UPDATE_TASK, updateTask);
 }
 
 export default tasksWatchers;

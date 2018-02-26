@@ -3,16 +3,14 @@ const express = require('express'),
       Task = require('../models/task');
 
 router.get('/tasks', (req, res) => {
-  res.send('tasks');
-  console.log('get');
-  // Task.get({}, (err, tasks) => {
-  //   res.send('tasks')
-  // })
+  Task.get((err, tasks) => {
+    res.send(tasks)
+  })
 })
 
 router.post('/tasks', (req, res) => {
-	console.log(req);
-  Task.create(req.params.id, (err, task) => {
+	console.log('req.task');
+  Task.create(req.task, (err, task) => {
     res.send(task)
   })
 })

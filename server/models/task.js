@@ -37,7 +37,10 @@ exports.create = (newTask, cb) => {
 exports.update = () => 'str';
 
 exports.delete = (id, cb) => {
-  Tasks.remove({ id }, (err, result) => {    
-    cb(err, result)
-  });
+	Tasks.remove({isDone: 0, priority: '2'}, (err, tasks) => {
+		cb(err, tasks)
+	});
+  // Tasks.remove({ id }, (err, result) => {    
+  //   cb(err, result)
+  // });
 };

@@ -22,6 +22,7 @@ router.put('/tasks', (req, res) => {
 
 router.delete('/tasks', (req, res) => {
   Task.delete(req.body.id, (err, result) => {
+    console.log(result);
     res.send(result)
   })
 })

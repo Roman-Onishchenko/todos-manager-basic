@@ -61,7 +61,8 @@ class AddModal extends React.Component {
     this.setState({ [event.target.name]: event.target.value })
   }
 
-  handleSaveTask = () => {
+  handleSaveTask = (e) => {
+    e.preventDefault();
     this.props.createTask(
       new Map({
         id: Date.now(),
@@ -104,6 +105,6 @@ class AddModal extends React.Component {
   }
 }
 
-const AddModallWrapped = withStyles(styles)(AddModal);
+const AddModalWrapped = withStyles(styles)(AddModal);
 
-export default AddModallWrapped;
+export default AddModalWrapped;

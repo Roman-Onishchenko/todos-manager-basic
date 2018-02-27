@@ -20,6 +20,7 @@ class RootApp extends Component {
     deleteTask: PropTypes.func,
     doneTask: PropTypes.func,
     clearTasksList: PropTypes.func,
+    getTasks: PropTypes.func,
   }
   
   render() {
@@ -53,6 +54,7 @@ class RootApp extends Component {
           showTaskEditModal={this.props.showTaskEditModal}
           deleteTask={this.props.deleteTask}
           doneTask={this.props.doneTask}
+          getTasks={this.props.getTasks}
           clearTasksList={this.props.clearTasksList}
         />
       </div>

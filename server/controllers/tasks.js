@@ -9,23 +9,20 @@ router.get('/tasks', (req, res) => {
 })
 
 router.post('/tasks', (req, res) => {
-	console.log('req.task');
-  Task.create(req.task, (err, task) => {
+  Task.create(req.body, (err, task) => {
     res.send(task)
   })
 })
 
-router.put('/tasks:id', (req, res) => {
-  console.log(req);
-  Task.update(req.params.id, (err, comment) => {
-    res.send(task)
+router.put('/tasks', (req, res) => {
+  Task.update(req.body.id, (err, comment) => {
+    res.send('task')
   })
 })
 
 router.delete('/tasks', (req, res) => {
-  console.log(req);
-  Task.delete(req.params.id, (err, comment) => {
-    res.redirect('/tasks')
+  Task.delete(req.body.id, (err, result) => {
+    res.send(result)
   })
 })
 

@@ -1,7 +1,6 @@
 Task = require('../models/task')
 
 module.exports = (req, res, next) => {
-	next()
 //   Task.get({}, (err, task) => {
 //     if (task) {
 //       req.task = task

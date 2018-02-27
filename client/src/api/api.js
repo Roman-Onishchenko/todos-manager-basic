@@ -4,7 +4,6 @@ import { fromJS } from 'immutable';
 
 class Api {
   constructor(params = {}) {
-    this.url = '';
     this.params = params;
 
     // this.save = ::this.save;
@@ -73,71 +72,76 @@ class Api {
   //   };
   // }
 
-  // // istanbul ignore next
-  // save(modelUrl, model) {
-  //   return new Promise((resolve, reject) => {
-  //     const url = `${this.getUrlBase()}${modelUrl}`;
+  save(taskId, task) {
+    return new Promise((resolve, reject) => {
+      let url = '/tasks';
 
-  //     const params = this.getFetchParams();
+      const params = {
+        method: "post",
+        body: JSON.stringify(task),
+        headers: {
+          "Accept": "application/json",
+          "Content-Type": "application/json"
+        }
+      };
+      // params.method = 'post';
+      // params.headers['Content-type'] = 'application/json';
+      // params.body = JSON.stringify(task);
 
-  //     params.method = 'post';
-  //     params.headers['Content-type'] = 'application/json; charset=utf-8';
-  //     params.body = JSON.stringify(model);
+      const id = taskId || '';
+      if (id !== '') {
+        // url += `/${id}`;
+        params.method = "put";
+      }
 
+      fetch(url, params).then((response) => {
+        response.json().then((jsonData) => {
+          const statusCode = response.status;
 
-  //     const id = model.id || '';
-  //     if (id !== '') {
-  //       // url += `/${id}`;
-  //       params.method = 'put';
-  //     }
+          if (statusCode === 200 || statusCode === 201) {
+            resolve({
+              data: jsonData,
+              meta: {},
+            });
+          } else {
+            reject(jsonData);
+          }
+        });
+      }, (response) => {
+        reject(response);
+      });
+    });
+  }
 
-  //     fetch(url, params).then((response) => {
-  //       response.json().then((jsonData) => {
-  //         const statusCode = response.status;
+  remove(taskId) {
 
-  //         if (statusCode === 200 || statusCode === 201) {
-  //           resolve({
-  //             data: jsonData,
-  //             meta: {},
-  //           });
-  //         } else {
-  //           reject(jsonData);
-  //         }
-  //       });
-  //     }, (response) => {
-  //       reject(response);
-  //     });
-  //   });
-  // }
-
-  // // istanbul ignore next
-  // remove(modelUrl, model) {
-  //   return new Promise((resolve, reject) => {
-  //     const url = `${this.getUrlBase()}${modelUrl}`;
-  //     const params = this.getFetchParams();
-  //     params.method = 'delete';
-  //     params.headers['Content-type'] = 'application/json; charset=utf-8';
-  //     if (typeof model !== 'undefined') {
-  //       params.body = JSON.stringify(model);
-  //     }
-  //     fetch(url, params).then((response) => {
-  //       response.json().then((jsonData) => {
-  //         const statusCode = response.status;
-
-  //         if (statusCode === 200 || statusCode === 201) {
-  //           resolve({
-  //             data: jsonData,
-  //             meta: {},
-  //           });
-  //         } else {
-  //           reject(jsonData);
-  //         }
-  //       });
-  //     }, (response) => {
-  //       reject(response);
-  //     });
-  //   });
-  // }
+    return new Promise((resolve, reject) => {
+      const url = '/tasks';
+      const params = {
+        method: "delete",
+        body: JSON.stringify({id: taskId}),
+        headers: {
+          "Accept": "application/json",
+          "Content-Type": "application/json"
+        }
+      };
+      fetch(url, params).then((response) => {
+        response.json().then((jsonData) => {
+          const statusCode = response.status;
+          if (statusCode === 200 || statusCode === 201) {
+            resolve({
+              data: jsonData,
+              meta: {},
+            });
+          } else {
+            reject(jsonData);
+          }
+        });
+      }, (response) => {
+        reject(response);
+      });
+    });
+  }
 }
 
 export default Api;

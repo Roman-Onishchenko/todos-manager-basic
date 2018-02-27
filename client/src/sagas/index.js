@@ -11,13 +11,12 @@ import createTask from './tasks/createTask';
 import deleteTask from './tasks/deleteTask';
 import updateTask from './tasks/updateTask';
 
-function* tasksWatchers() {
-  yield call(loadTasks);
-
+function* mySaga() {
+  // yield call(loadTasks);
   yield takeEvery(CREATE_TASK, createTask);
   yield takeEvery(DELETE_TASK, deleteTask);
   yield takeEvery(UPDATE_TASK, updateTask);
 }
 
-export default tasksWatchers;
+export default mySaga;
 

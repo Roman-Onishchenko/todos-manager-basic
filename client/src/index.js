@@ -1,3 +1,4 @@
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore, applyMiddleware, compose } from 'redux';
@@ -6,7 +7,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import createSagaMiddleware from 'redux-saga';
 
 import reducer from './reduxBase/reducers/index';
-import tasksWatchers from './sagas';
+import mySaga from './sagas';
 import RootApp from './containers/RootApp';
 import Registration from './containers/Registration/';
 import Authorization from './containers/Authorization/';
@@ -22,7 +23,7 @@ const store = createStore(
   )
 )
 
-sagaMiddleware.run(tasksWatchers);
+sagaMiddleware.run(mySaga);
 
 ReactDOM.render(
   <Provider store={store}>

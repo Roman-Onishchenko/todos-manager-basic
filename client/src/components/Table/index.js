@@ -29,6 +29,10 @@ export default class TasksTable extends Component {
     taskDone: '0',
   };
 
+  componentDidMount() {
+    this.props.getTasks();
+  }
+
   changeFiltersVisibility = () => {
     this.setState((prevState) => ({
       filtersOpened: !prevState.filtersOpened

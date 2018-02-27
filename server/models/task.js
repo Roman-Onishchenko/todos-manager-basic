@@ -22,10 +22,23 @@ exports.get = (cb) => {
 	});
 }
 
-exports.create = (task, cb) => {
-	
+exports.create = (newTask, cb) => {
+	const task = new Tasks({
+		id: newTask.id,
+		text: newTask.text,
+		isDone: newTask.isDone,
+		priority: newTask.priority,
+		category: newTask.category
+	})
+	task.save((err) => {
+	  cb(err, task)
+  });
 };
 
 exports.update = () => 'str';
 
-exports.delete = () => 'str';
+exports.delete = (id, cb) => {
+  Tasks.remove({ id }, (err, result) => {    
+    cb(err, result)
+  });
+};

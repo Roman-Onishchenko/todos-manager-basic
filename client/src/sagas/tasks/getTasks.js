@@ -3,7 +3,7 @@ import Api from '../../api/api';
 
 import { setErrorMessage, setTasks } from '../../reduxBase/actions/';
 
-export default function* loadTasks() {
+export default function* getTasks() {
   const api = new Api();
   let tasks = null;
 

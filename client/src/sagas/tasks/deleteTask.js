@@ -3,11 +3,11 @@ import Api from '../../api/api';
 
 import { setErrorMessage } from '../../reduxBase/actions/';
 
-export default function* deleteUser(action) {
+export default function* deleteTask(action) {
   const api = new Api();
   try {
-    yield call(api.remove, `protected/user/${action.userId}`);
-  } catch (response) {
+    const response = yield call(api.remove, action.taskId);
+  } catch (error) {
     yield put(setErrorMessage('Error remove task'));
     return;
   }

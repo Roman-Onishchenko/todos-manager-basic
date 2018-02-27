@@ -17,7 +17,6 @@ const Tasks = mongoose.model('Tasks', taskScheme);
 
 exports.get = (cb) => {
 	Tasks.find({}, (err, tasks) => {
-		mongoose.disconnect();
 		cb(err, tasks)
 	});
 }

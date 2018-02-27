@@ -29,10 +29,9 @@ class Api {
           this.errorHandler(response, reject);
           return;
         }
-        resolve(response);
-        // response.json().then((jsonData) => {
-        //   resolve(fromJS(jsonData));
-        // });
+        response.json().then((jsonData) => {
+          resolve(fromJS(jsonData));
+        });
       }).catch((response) => this.errorHandler(response, reject));
     });
   }

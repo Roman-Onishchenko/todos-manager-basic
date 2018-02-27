@@ -9,10 +9,7 @@ export default function* getTasks() {
 
   try {
     const response = yield call(api.get);
-    tasks = response.toJS();
-    // console.log(response);
-    // tasks = response.get('tasks')
-    //   .map((itemData) => fromApiObject(itemData));
+    tasks = response.delete(0);
   } catch (response) {
     yield put(setErrorMessage('Error loading tasks'));
     return;

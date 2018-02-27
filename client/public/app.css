@@ -166,7 +166,6 @@ a {
   color: brown;
   font-size: 1.1em;
 }
-
 @media only screen and (max-width: 950px) {
   .table__iconcell{
     width: 50px;
@@ -176,28 +175,24 @@ a {
     min-height: 48px;
     height: auto;
   }
-
-  .success-icon {
+  .c {
     order: -1;
   }
-
   .table-maincell-not-done {
     display: flex;
     vertical-align: middle;
     align-content: center;
     align-items: center;
   }
-
   .a, .d {
     margin-top: auto;
     margin-left: -50px;
   }
-
   .b, .c {
     margin-bottom: auto;
     padding-bottom: 40px !important;
   }
-  .c {
+  .b {
     margin-right: 2px;
   }
 }

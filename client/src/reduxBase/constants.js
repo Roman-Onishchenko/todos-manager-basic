@@ -24,6 +24,8 @@ export const HIDE_TASK_MODAL = 'HIDE_TASK_MODAL';
 
 export const USER_REGISTER = 'USER_REGISTER';
 
-export const USER_AUTH_ATTEMPT = 'USER_AUTH_ATTEMPT';
+export const ADD_USER = 'ADD_USER';
 
-export const USER_AUTHORIZE = 'USER_AUTHORIZE';
+// export const USER_AUTH_ATTEMPT = 'USER_AUTH_ATTEMPT';
+
+// export const USER_AUTHORIZE = 'USER_AUTHORIZE';

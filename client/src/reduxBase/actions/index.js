@@ -90,16 +90,23 @@ export function userRegister(user) {
   };
 }
 
-export function userAuthAttempt(user) {
+export function addUser(user) {
   return {
-    type: actionTypes.USER_AUTH_ATTEMPT,
+    type: actionTypes.ADD_USER,
     user,
   };
 }
 
-export function userAuthorize(userId) {
-  return {
-    type: actionTypes.USER_AUTHORIZE,
-    userId,
-  };
-}
+// export function userAuthAttempt(user) {
+//   return {
+//     type: actionTypes.USER_AUTH_ATTEMPT,
+//     user,
+//   };
+// }
+
+// export function userAuthorize(userId) {
+//   return {
+//     type: actionTypes.USER_AUTHORIZE,
+//     userId,
+//   };
+// }

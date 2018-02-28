@@ -6,7 +6,7 @@ import { setErrorMessage, addTask, hideTaskModal } from '../../reduxBase/actions
 
 export default function* createTask(action) {
   const api = new Api();
-  const newTask = action.task.toJS()
+  const newTask = action.task.toJS();
   let task;
   try {
     const response = yield call(api.save, null, newTask);

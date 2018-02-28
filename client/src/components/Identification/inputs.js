@@ -18,7 +18,7 @@ const styles = theme => ({
 });
 
 function Inputs(props) {
-  const { classes, currentPath } = props;
+  const { classes, currentPath, emailError } = props;
   let inputs;
   if(currentPath === '/authorization') {
     inputs = 
@@ -77,7 +77,7 @@ function Inputs(props) {
           placeholder="mail@.com"
           className={classes.textField}
           margin="normal"
-          error={false}
+          error={emailError}
         />
         <TextField
           onChange={props.handleChangeInput}
@@ -101,6 +101,7 @@ function Inputs(props) {
 
 Inputs.propTypes = {
   classes: PropTypes.object.isRequired,
+  emailError: PropTypes.bool,
 };
 
 export default withStyles(styles)(Inputs);

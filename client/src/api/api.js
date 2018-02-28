@@ -20,69 +20,37 @@ class Api {
   //   });
   // }
 
-  save(taskId, task) {
-    return new Promise((resolve, reject) => {
-      let url = '/tasks';
-      const params = {
-        method: "post",
-        body: JSON.stringify(task),
-        headers: {
-          "Accept": "application/json",
-          "Content-Type": "application/json"
-        }
-      };
-      if (taskId) {
-        params.method = "put";
-      }
-
-      fetch(url, params).then((response) => {
-        response.json().then((jsonData) => {
-          const statusCode = response.status;
-
-          if (statusCode === 200 || statusCode === 201) {
-            resolve({
-              data: jsonData,
-            });
-          } else {
-            reject(jsonData);
-          }
-        });
-      }, (response) => {
-        reject(response);
-      });
-    });
-  }
-
   save(url, data) {
-    return new Promise((resolve, reject) => {
-      const params = {
-        method: "post",
-        body: JSON.stringify(data),
-        headers: {
-          "Accept": "application/json",
-          "Content-Type": "application/json"
-        }
-      };
-      if (data.id) {
-        params.method = "put";
-      }
+    console.log('api',url, data);
+    // return new Promise((resolve, reject) => {
+    //   const params = {
+    //     method: "post",
+    //     body: JSON.stringify(data),
+    //     headers: {
+    //       "Accept": "application/json",
+    //       "Content-Type": "application/json"
+    //     }
+    //   };
+    //   if (data.id) {
+    //     params.method = "put";
+    //   }
 
-      fetch(url, params).then((response) => {
-        response.json().then((jsonData) => {
-          const statusCode = response.status;
+    //   fetch(url, params).then((response) => {
+    //     response.json().then((jsonData) => {
+    //       const statusCode = response.status;
 
-          if (statusCode === 200 || statusCode === 201) {
-            resolve({
-              data: jsonData,
-            });
-          } else {
-            reject(jsonData);
-          }
-        });
-      }, (response) => {
-        reject(response);
-      });
-    });
+    //       if (statusCode === 200 || statusCode === 201) {
+    //         resolve({
+    //           data: jsonData,
+    //         });
+    //       } else {
+    //         reject(jsonData);
+    //       }
+    //     });
+    //   }, (response) => {
+    //     reject(response);
+    //   });
+    // });
   }
 
 //   remove(taskId, isDone, category) {
@@ -125,6 +93,6 @@ class Api {
 //       });
 //     });
 //   }
-// }
+}
 
 export default Api;

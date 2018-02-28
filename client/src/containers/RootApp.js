@@ -67,7 +67,7 @@ class RootApp extends Component {
 
 export default connect(
   state => ({
-     tasksReducer: state.todoListReducer
+     tasksReducer: state.todoAppReducer
   }),
   dispatch => bindActionCreators(actions, dispatch)
 )(RootApp);

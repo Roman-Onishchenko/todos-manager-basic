@@ -7,6 +7,7 @@ import { setErrorMessage, addUser } from '../../reduxBase/actions/';
 export default function* userRegister(action) {
   const api = new Api();
   const newUser = action.user.toJS();
+  console.log('saga', newUser);
   let user;
   try {
     const response = yield call(api.save, '/createUser', newUser);

@@ -48,9 +48,11 @@ class Registration extends React.Component {
     userLogin: '',
     userEmail: '',
     userPass: '',
+    emailError: false,
   };
 
   handleChangeInput = (event) => {
+    if(event.target.name === 'userEmail') this.setState({emailError: false});
     if(event.target.value.length > 0) {
       this.setState({ [event.target.name]: event.target.value })
     } else {
@@ -60,15 +62,19 @@ class Registration extends React.Component {
 
   sendRegistrationData = () => {
     const { userName, userLogin, userEmail, userPass } = this.state;
-    this.props.userRegister(new Map
+    const filter = /^\s*[\w\-\+_]+(\.[\w\-\+_]+)*\@[\w\-\+_]+\.[\w\-\+_]+(\.[\w\-\+_]+)*\s*$/;
+    if(userEmail.search(filter) != -1) {
+      this.props.userRegister(new Map
       ({
         id: Date.now(),
         userName,
         userLogin,
         userEmail,
         userPass,
-      })
-    )
+      }))
+    } else {
+        this.setState({emailError: true})
+      }
   }
 
   render() {
@@ -87,7 +93,7 @@ class Registration extends React.Component {
             <Typography className={classes.header} variant="title" id="modal-title">
              	Registration
             </Typography>
-            <Inputs handleChangeInput={this.handleChangeInput} />
+            <Inputs handleChangeInput={this.handleChangeInput} emailError={this.state.emailError} />
             <div className="register-buttons">
             	<AuthorizationBtn />
             	<RegistrationBtn active={!!active} currentPath={currentPath} sendRegistrationData={this.sendRegistrationData} />

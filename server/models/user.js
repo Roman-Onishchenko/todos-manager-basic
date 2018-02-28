@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const md5 = require("./md5");
+const md5 = require("blueimp-md5");
 const Schema = mongoose.Schema;
 
 mongoose.Promise = global.Promise;
@@ -30,14 +30,14 @@ const Users = mongoose.model('Users', userScheme);
 // }
 
 exports.create = (user, cb) => {
-	const user = new Users({
+	const newUser = new Users({
 		id: md5(Date.now()),
 	  name: user.name,
 		login: user.login,
 		email: user.email,
 		pass: md5(user.pass),
 	})
-	user.save((err) => {
+	newUser.save((err) => {
 	  cb(err, user)
   });
 };

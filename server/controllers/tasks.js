@@ -15,14 +15,13 @@ router.post('/tasks', (req, res) => {
 })
 
 router.put('/tasks', (req, res) => {
-  Task.update(req.body.id, (err, comment) => {
-    res.send('task')
+  Task.update(req.body, (err, result) => {
+    res.send(result)
   })
 })
 
 router.delete('/tasks', (req, res) => {
-  Task.delete(req.body.id, (err, result) => {
-    console.log(result);
+  Task.delete(req.body, (err, result) => {
     res.send(result)
   })
 })

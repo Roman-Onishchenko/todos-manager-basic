@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Table, { TableBody  } from 'material-ui/Table';
 import Paper from 'material-ui/Paper';
 import { TableCell, TableRow } from 'material-ui/Table';
+import { Map } from 'immutable';
 
 import FilterCategory from './filterCategory';
 import EmptyTableImg from './emptyTableImg';
@@ -12,6 +13,7 @@ import ClearTasksBtn from './Buttons/clearTasksBtn';
 import NotDoneTask  from './Tasks/notDoneTask';
 import DoneTask  from './Tasks/doneTask';
 import GreetingMessage from './greetingMessage';
+import ErrorMessage from './errorMessage';
 
 export default class TasksTable extends Component {
   static propTypes = {
@@ -19,7 +21,9 @@ export default class TasksTable extends Component {
     clearTasksList: PropTypes.func,
     showTaskAddModal: PropTypes.func,
     doneTask: PropTypes.func,
+    updateTask: PropTypes.func,
     deleteTask: PropTypes.func,
+    errorMessage: PropTypes.string,
   }
 
   state = {
@@ -41,6 +45,16 @@ export default class TasksTable extends Component {
 
   changeFilterCriteria = (event) => {
     this.setState({ [event.target.name]: event.target.value })
+  }
+
+  markDoneTask = (task, id) => {
+    const doneTask = task.merge(
+      new Map({
+        isDone: 1,
+      })
+    );
+    this.props.updateTask(doneTask, id);
+    this.props.doneTask(id);
   }
 
   getTaskByPriority = (priority, category, taskDone) => {
@@ -68,7 +82,7 @@ export default class TasksTable extends Component {
             key={task.get('id')}
             task={task}
             showTaskEditModal={this.props.showTaskEditModal}
-            doneTask={this.props.doneTask}
+            markDoneTask={this.markDoneTask}
             deleteTask={this.props.deleteTask}
           />)
     } else if(Number(taskDone) === 1 && this.getTaskByPriority(priority, category, taskDone).size > 0) {
@@ -82,6 +96,7 @@ export default class TasksTable extends Component {
     return (
       <Paper className="paper">
         <GreetingMessage />
+        {this.props.errorMessage && <ErrorMessage errorMessage={this.props.errorMessage} />}
         <AddTaskBtn showTaskAddModal={this.props.showTaskAddModal} />
         <div className="table-wrapper">
           <Table className="table">
@@ -92,10 +107,11 @@ export default class TasksTable extends Component {
         </div>
         <div className="buttons-container">
           <FilterCategoriesBtn filtersOpened={this.state.filtersOpened} changeFiltersVisibility={this.changeFiltersVisibility} />
-          <ClearTasksBtn clearTasksList={this.props.clearTasksList} taskDone={taskDone} />
+          <ClearTasksBtn clearTasksList={this.props.clearTasksList} category={category} isDone={Number(taskDone)} />
         </div>
         {this.state.filtersOpened && 
           <FilterCategory 
+            tasksList={this.props.tasksList}
             priority={this.state.priority}
             category={this.state.category}
             taskDone={this.state.taskDone}

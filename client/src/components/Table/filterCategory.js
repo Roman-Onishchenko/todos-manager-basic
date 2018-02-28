@@ -4,6 +4,9 @@ import Radio, { RadioGroup } from 'material-ui/Radio';
 import { FormLabel, FormControl, FormControlLabel } from 'material-ui/Form';
 
 export default function FilterCategory(props) {
+  const dayTasksNum = props.tasksList.filter(task => task.get('category') === 'day').size;
+  const weekTasksNum = props.tasksList.filter(task => task.get('category') === 'week').size;
+  const monthTasksNum = props.tasksList.filter(task => task.get('category') === 'month').size;
   return (
     <div className="radios-wrapper">
       <FormControl component="fieldset" required className="form-control">
@@ -15,9 +18,9 @@ export default function FilterCategory(props) {
           value={props.category}
           onChange={props.changeFilterCriteria}
         >
-          <FormControlLabel value="day" control={<Radio />} label="Day" />
-          <FormControlLabel value="week" control={<Radio />} label="Week" />
-          <FormControlLabel value="month" control={<Radio />} label="Month" />
+          <FormControlLabel value="day" control={<Radio />} label={`Day (${dayTasksNum})`} />
+          <FormControlLabel value="week" control={<Radio />} label={`Week (${weekTasksNum})`} />
+          <FormControlLabel value="month" control={<Radio />} label={`Month (${monthTasksNum})`} />
         </RadioGroup>
       </FormControl>
       <FormControl component="fieldset" required className="form-control">
@@ -55,6 +58,7 @@ export default function FilterCategory(props) {
 FilterCategory.propTypes = {
   category: PropTypes.string,
   priority: PropTypes.string,
+  tasksList: PropTypes.object,
   taskDone: PropTypes.string,
   changeFilterCriteria: PropTypes.func,
 };

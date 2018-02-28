@@ -34,13 +34,20 @@ exports.create = (newTask, cb) => {
   });
 };
 
-exports.update = () => 'str';
-
-exports.delete = (id, cb) => {
-	Tasks.remove({isDone: 0, priority: '2'}, (err, tasks) => {
-		cb(err, tasks)
+exports.update = (data, cb) => {
+	Tasks.update({id: data.id}, data, (err, result) => {
+		cb(err, result)
 	});
-  // Tasks.remove({ id }, (err, result) => {    
-  //   cb(err, result)
-  // });
+};
+
+exports.delete = (data, cb) => {
+	if(data.id) {
+		Tasks.remove({id: data.id}, (err, result) => {
+		cb(err, result)
+	});
+	} else {
+		Tasks.remove({isDone: data.isDone, category: data.category}, (err, result) => {
+			cb(err, result)
+		});
+	}
 };

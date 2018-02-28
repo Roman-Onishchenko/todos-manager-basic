@@ -162,6 +162,12 @@ a {
   text-align: center;
   color: black;
 }
+.error-message {
+  color: red;
+  position: absolute;
+  right: 5%;
+  width: 25%;
+}
 .auth-login {
   color: brown;
   font-size: 1.1em;

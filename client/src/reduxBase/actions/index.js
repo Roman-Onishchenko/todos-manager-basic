@@ -56,10 +56,11 @@ export function deleteTask(taskId) {
   };
 }
 
-export function clearTasksList(taskDone) {
+export function clearTasksList(isDone, category) {
   return {
     type: actionTypes.CLEAR_TASKS_LIST,
-    taskDone,
+    isDone,
+    category,
   };
 }
 

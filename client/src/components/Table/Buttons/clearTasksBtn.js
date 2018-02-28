@@ -7,7 +7,7 @@ export default function ClearTasks(props) {
     <Button 
 	    variant="raised" 
 	    className="button button_red"
-	    onClick={() => props.clearTasksList(props.taskDone)}
+	    onClick={() => props.clearTasksList(props.isDone, props.category)}
     >
       Clear Tasks
     </Button>
@@ -16,5 +16,6 @@ export default function ClearTasks(props) {
 
 ClearTasks.propTypes = {
   clearTasksList: PropTypes.func,
-  taskDone: PropTypes.string,
+  taskDone: PropTypes.number,
+  category: PropTypes.string,
 };

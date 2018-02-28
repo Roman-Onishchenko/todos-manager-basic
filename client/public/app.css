@@ -157,10 +157,16 @@ a {
   margin-right: 25px !important;
 }
 .greeting-message {
-  width: 200px;
   position: absolute;
-  text-align: center;
-  color: black;
+  top: 0;
+  right: 3%;
+  color: brown;
+  padding: 2px 5px;
+  border-radius: 4px;
+  background-color: white;
+}
+.auth-login {
+  font-size: 1.1em;
 }
 .error-message {
   color: red;
@@ -168,10 +174,7 @@ a {
   right: 5%;
   width: 25%;
 }
-.auth-login {
-  color: brown;
-  font-size: 1.1em;
-}
+
 @media only screen and (max-width: 950px) {
   .table__iconcell{
     width: 50px;

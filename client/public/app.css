@@ -73,6 +73,10 @@ a {
   text-decoration: none;
   color: inherit;
 }
+ span[class^="MuiBadge-root"] span { 
+  background-color: indianred;
+  font-weight: bold;
+ }
 .button_grey {
   background-color: white !important;
   color: black !important;

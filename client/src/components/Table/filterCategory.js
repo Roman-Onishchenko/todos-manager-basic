@@ -8,7 +8,7 @@ import { withStyles } from 'material-ui/styles';
 const styles = theme => ({
   margin: {
     margin: theme.spacing.unit * 2,
-    top: '-5px'
+    top: '-6px'
   },
 });
 

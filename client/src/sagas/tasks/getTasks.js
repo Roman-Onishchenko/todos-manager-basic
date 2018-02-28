@@ -11,7 +11,7 @@ export default function* getTasks() {
     const response = yield call(api.get);
     tasks = response.delete(0);
   } catch (response) {
-    yield put(setErrorMessage('Error loading tasks'));
+    yield put(setErrorMessage(response.error));
     return;
   }
 

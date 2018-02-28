@@ -3,7 +3,7 @@ import React from 'react';
 
 export default function GreetingMessage(props) {
   return (
-    <p className="greeting-message">Welcome back, <span className="auth-login">Login</span></p>
+    <p className="greeting-message">Welcome back, <span className="auth-login">Roman</span></p>
   );
 }
 

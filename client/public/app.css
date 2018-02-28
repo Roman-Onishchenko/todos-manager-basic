@@ -73,6 +73,10 @@ a {
   text-decoration: none;
   color: inherit;
 }
+ span[class^="MuiBadge-root"] span { 
+  background-color: indianred;
+  font-weight: bold;
+ }
 .button_grey {
   background-color: white !important;
   color: black !important;
@@ -157,15 +161,24 @@ a {
   margin-right: 25px !important;
 }
 .greeting-message {
-  width: 200px;
   position: absolute;
-  text-align: center;
-  color: black;
+  top: 0;
+  right: 3%;
+  color: brown;
+  padding: 2px 5px;
+  border-radius: 4px;
+  background-color: white;
 }
 .auth-login {
-  color: brown;
   font-size: 1.1em;
 }
+.error-message {
+  color: red;
+  position: absolute;
+  right: 5%;
+  width: 25%;
+}
+
 @media only screen and (max-width: 950px) {
   .table__iconcell{
     width: 50px;

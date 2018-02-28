@@ -55,6 +55,7 @@ const initialState = new Map({
   ]),
   modalType: null,
   taskId: null,
+  errorMessage: null,
 });
 
 export default function todoListReducer(state = initialState, action) {
@@ -107,8 +108,11 @@ export default function todoListReducer(state = initialState, action) {
           taskId: null,
         });
 
-      case actionTypes.CLEAR_TASKS_LIST:
-        return state.set('tasks', state.get('tasks').filter(task => task.get('isDone') !== Number(action.taskDone)));
+      case actionTypes.SET_ERROR_MESSAGE:
+        return state.merge({
+          modalType: null,
+          errorMessage: action.message,
+        });
         
       default:
         return state;

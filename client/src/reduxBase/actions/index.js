@@ -56,10 +56,11 @@ export function deleteTask(taskId) {
   };
 }
 
-export function clearTasksList(taskDone) {
+export function clearTasksList(isDone, category) {
   return {
     type: actionTypes.CLEAR_TASKS_LIST,
-    taskDone,
+    isDone,
+    category,
   };
 }
 
@@ -89,16 +90,16 @@ export function userRegister(user) {
   };
 }
 
-export function userAuthAttempt(user) {
-  return {
-    type: actionTypes.USER_AUTH_ATTEMPT,
-    user,
-  };
-}
+// export function userAuthAttempt(user) {
+//   return {
+//     type: actionTypes.USER_AUTH_ATTEMPT,
+//     user,
+//   };
+// }
 
-export function userAuthorize(userId) {
-  return {
-    type: actionTypes.USER_AUTHORIZE,
-    userId,
-  };
-}
+// export function userAuthorize(userId) {
+//   return {
+//     type: actionTypes.USER_AUTHORIZE,
+//     userId,
+//   };
+// }

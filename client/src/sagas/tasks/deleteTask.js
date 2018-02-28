@@ -6,9 +6,9 @@ import { setErrorMessage } from '../../reduxBase/actions/';
 export default function* deleteTask(action) {
   const api = new Api();
   try {
-    const response = yield call(api.remove, action.taskId);
-  } catch (error) {
-    yield put(setErrorMessage('Error remove task'));
+    yield call(api.remove, action.taskId);
+  } catch (response) {
+    yield put(setErrorMessage(response.error));
     return;
   }
 }

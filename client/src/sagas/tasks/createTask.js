@@ -15,6 +15,7 @@ export default function* createTask(action) {
     yield put(setErrorMessage(response.error));
     return;
   }
+  
   yield put(addTask(task));
   yield put(hideTaskModal());
 }

@@ -24,7 +24,7 @@ export default function NotDoneTask(props) {
         <TableCell className="table__iconcell success-icon b">
           <Tooltip id="tooltip-icon" title="Success">
             <IconButton aria-label="Success">
-              <SuccessIcon onClick={() => props.doneTask(task.get('id'))} className="icon icon_success-icon" />
+              <SuccessIcon onClick={() => props.markDoneTask(task, task.get('id'))} className="icon icon_success-icon" />
             </IconButton>
           </Tooltip>
         </TableCell>
@@ -49,7 +49,7 @@ export default function NotDoneTask(props) {
 
 NotDoneTask.propTypes = {
   task: PropTypes.object,
-  doneTask: PropTypes.func,
+  markDoneTask: PropTypes.func,
   showTaskEditModal: PropTypes.func,
   deleteTask: PropTypes.func,
 };

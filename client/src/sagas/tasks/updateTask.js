@@ -1,5 +1,4 @@
-import _ from 'lodash';
-import { call, put, select } from 'redux-saga/effects';
+import { call, put } from 'redux-saga/effects';
 
 import Api from '../../api/api';
 
@@ -10,12 +9,13 @@ import {
 
 export default function* updateTask(action) {
   const api = new Api();
-  const task = yield select((state) => state.get('page').get('users').find((item) => item.id === action.userId));
+  const updateTask = action.task.toJS();
   try {
-    yield call(api.save, '/task', _.merge(task.toApiObject(), { id: task.get('id')}));
+    yield call(api.save, updateTask.id, updateTask);
   } catch (response) {
-    yield put(setErrorMessage('Error saving task'));
+    yield put(setErrorMessage(response.error));
     return;
   }
+  
   yield put(hideTaskModal());
 }

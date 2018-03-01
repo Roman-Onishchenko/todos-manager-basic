@@ -5,5 +5,6 @@ const express = require('express'),
 // router.use(bodyParser.json());
 
 router.use(require('./tasks'))
+router.use(require('./users'))
 
 module.exports = router

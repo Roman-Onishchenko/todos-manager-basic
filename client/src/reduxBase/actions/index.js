@@ -1,8 +1,9 @@
 import * as actionTypes from '../constants';
 
-export function getTasks() {
+export function getTasks(id) {
   return {
     type: actionTypes.GET_TASKS,
+    id
   };
 }
 
@@ -20,10 +21,11 @@ export function setErrorMessage(message) {
   };
 }
 
-export function createTask(task) {
+export function createTask(task, userId) {
   return {
     type: actionTypes.CREATE_TASK,
     task,
+    userId,
   };
 }
 
@@ -34,11 +36,12 @@ export function addTask(task) {
   };
 }
 
-export function updateTask(task, taskId) {
+export function updateTask(task, taskId, userId) {
   return {
     type: actionTypes.UPDATE_TASK,
     task,
     taskId,
+    userId,
   };
 }
 
@@ -49,10 +52,11 @@ export function doneTask(taskId) {
   };
 }
 
-export function deleteTask(taskId) {
+export function deleteTask(taskId, userId) {
   return {
     type: actionTypes.DELETE_TASK,
     taskId,
+    userId,
   };
 }
 
@@ -90,16 +94,29 @@ export function userRegister(user) {
   };
 }
 
-// export function userAuthAttempt(user) {
-//   return {
-//     type: actionTypes.USER_AUTH_ATTEMPT,
-//     user,
-//   };
-// }
+export function setUser(user) {
+  return {
+    type: actionTypes.SET_USER,
+    user,
+  };
+}
 
-// export function userAuthorize(userId) {
-//   return {
-//     type: actionTypes.USER_AUTHORIZE,
-//     userId,
-//   };
-// }
+export function userExist() {
+  return {
+    type: actionTypes.USER_EXIST,
+  };
+}
+
+export function userAuthAttempt(user) {
+  return {
+    type: actionTypes.USER_AUTH_ATTEMPT,
+    user,
+  };
+}
+
+export function userNotAuth() {
+  return {
+    type: actionTypes.USER_NOT_AUTH,
+  };
+}
+

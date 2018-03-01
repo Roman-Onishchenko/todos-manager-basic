@@ -42,6 +42,7 @@ class EditModal extends React.Component {
     hideTaskModal: PropTypes.func,
     classes: PropTypes.object.isRequired,
     open: PropTypes.bool,
+    userId: PropTypes.string,
   }
 
   constructor(props) {
@@ -64,7 +65,9 @@ class EditModal extends React.Component {
       this.setState({ [event.target.name]: event.target.value })
     }
 
-    this.handleSaveTask = () => {
+    this.handleSaveTask = (e) => {
+      e.preventDefault();
+
       const updatedTask = this.props.activeTask.merge(
         new Map({
           text: this.state.taskText,
@@ -73,7 +76,8 @@ class EditModal extends React.Component {
         })
       );
       const taskId = this.props.activeTask.get('id');
-      this.props.updateTask(updatedTask, taskId);
+      const { userId } = this.props;
+      this.props.updateTask(updatedTask, taskId, userId);
       this.props.hideTaskModal();
     }
   }

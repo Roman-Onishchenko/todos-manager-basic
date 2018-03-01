@@ -9,7 +9,7 @@ import SuccessIcon from 'material-ui-icons/CheckBox';
 import PropTypes from 'prop-types';
 
 export default function NotDoneTask(props) {
-	const { task } = props;
+	const { task, userId} = props;
   return (
     <TableRow>
       <div className="table-row">
@@ -38,7 +38,7 @@ export default function NotDoneTask(props) {
         <TableCell className="table__iconcell d">
           <Tooltip id="tooltip-icon" title="Delete">
              <IconButton aria-label="Delete">
-              <DeleteIcon onClick={() => props.deleteTask(task.get('id'))} className="icon icon_delete-icon" />
+              <DeleteIcon onClick={() => props.deleteTask(task.get('id'), userId)} className="icon icon_delete-icon" />
             </IconButton>
           </Tooltip>
         </TableCell>

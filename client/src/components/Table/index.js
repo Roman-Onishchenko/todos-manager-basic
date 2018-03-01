@@ -24,6 +24,8 @@ export default class TasksTable extends Component {
     updateTask: PropTypes.func,
     deleteTask: PropTypes.func,
     errorMessage: PropTypes.string,
+    userLogin: PropTypes.string,
+    userId: PropTypes.string,
   }
 
   state = {
@@ -34,7 +36,7 @@ export default class TasksTable extends Component {
   };
 
   componentDidMount() {
-    this.props.getTasks();
+    this.props.getTasks(this.props.userId);
   }
 
   changeFiltersVisibility = () => {
@@ -83,6 +85,7 @@ export default class TasksTable extends Component {
             task={task}
             showTaskEditModal={this.props.showTaskEditModal}
             markDoneTask={this.markDoneTask}
+            userId={this.props.userId}
             deleteTask={this.props.deleteTask}
           />)
     } else if(Number(taskDone) === 1 && this.getTaskByPriority(priority, category, taskDone).size > 0) {
@@ -95,7 +98,7 @@ export default class TasksTable extends Component {
 
     return (
       <Paper className="paper">
-        <GreetingMessage />
+        <GreetingMessage userLogin={this.props.userLogin} />
         {this.props.errorMessage && <ErrorMessage errorMessage={this.props.errorMessage} />}
         <AddTaskBtn showTaskAddModal={this.props.showTaskAddModal} />
         <div className="table-wrapper">

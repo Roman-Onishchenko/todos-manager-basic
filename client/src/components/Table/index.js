@@ -25,6 +25,7 @@ export default class TasksTable extends Component {
     deleteTask: PropTypes.func,
     errorMessage: PropTypes.string,
     userLogin: PropTypes.string,
+    userId: PropTypes.string,
   }
 
   state = {
@@ -35,7 +36,7 @@ export default class TasksTable extends Component {
   };
 
   componentDidMount() {
-    this.props.getTasks();
+    this.props.getTasks(this.props.userId);
   }
 
   changeFiltersVisibility = () => {

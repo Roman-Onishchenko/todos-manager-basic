@@ -2,9 +2,10 @@ const express = require('express'),
       router = express.Router(),
       User = require('../models/user');
 
-router.get('/tasks', (req, res) => {
-  Task.get((err, tasks) => {
-    res.send(tasks)
+router.get('/getTasks/:id', (req, res) => {
+  const id = req.params.id;
+  User.get(id, (err, user) => {
+    res.send(user[0])
   })
 })
 

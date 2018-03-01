@@ -3,13 +3,13 @@ import Api from '../../api/api';
 
 import { setErrorMessage, setTasks } from '../../reduxBase/actions/';
 
-export default function* getTasks() {
+export default function* getTasks(action) {
   const api = new Api();
   let tasks = null;
 
   try {
-    const response = yield call(api.get);
-    tasks = response.delete(0);
+    const response = yield call(api.get, `/getTasks/${action.id}`);
+    tasks = response.get('tasks');
   } catch (response) {
     yield put(setErrorMessage(response.error));
     return;

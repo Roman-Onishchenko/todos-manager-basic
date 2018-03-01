@@ -1,8 +1,9 @@
 import * as actionTypes from '../constants';
 
-export function getTasks() {
+export function getTasks(id) {
   return {
     type: actionTypes.GET_TASKS,
+    id
   };
 }
 

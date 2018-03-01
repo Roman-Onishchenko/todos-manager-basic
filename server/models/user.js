@@ -23,6 +23,12 @@ const user = {
 const userScheme = new Schema(user, {versionKey: false});
 const Users = mongoose.model('Users', userScheme);
 
+exports.get = (id, cb) => {
+	Users.find({id}, (err, user) => {
+		cb(err, user)
+	});
+}
+
 exports.checkAuth = (data, cb) => {
 	Users.findOne({email: data.email, pass: md5(data.pass)}, (err, user) => {
 		if(!user) {

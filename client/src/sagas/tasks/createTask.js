@@ -15,6 +15,6 @@ export default function* createTask(action) {
     return;
   }
   
-  yield put(getTasks(action.userId));
+  yield put(addTask(action.task));
   yield put(hideTaskModal());
 }

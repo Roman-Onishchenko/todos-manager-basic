@@ -85,6 +85,7 @@ export default class TasksTable extends Component {
             task={task}
             showTaskEditModal={this.props.showTaskEditModal}
             markDoneTask={this.markDoneTask}
+            userId={this.props.userId}
             deleteTask={this.props.deleteTask}
           />)
     } else if(Number(taskDone) === 1 && this.getTaskByPriority(priority, category, taskDone).size > 0) {

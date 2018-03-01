@@ -52,10 +52,11 @@ export function doneTask(taskId) {
   };
 }
 
-export function deleteTask(taskId) {
+export function deleteTask(taskId, userId) {
   return {
     type: actionTypes.DELETE_TASK,
     taskId,
+    userId,
   };
 }
 

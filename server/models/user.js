@@ -8,7 +8,7 @@ mongoose.connect("mongodb://localhost:27017/usersdb");
 const user = {
 	id: String,
 	name: String,
-	login: Number,
+	login: String,
 	email: String,
 	pass: String,
 	tasks: [{
@@ -29,16 +29,22 @@ const Users = mongoose.model('Users', userScheme);
 // 	});
 // }
 
-exports.create = (user, cb) => {
-	const newUser = new Users({
-		id: md5(Date.now()),
-	  name: user.name,
-		login: user.login,
-		email: user.email,
-		pass: md5(user.pass),
-	})
-	newUser.save((err) => {
-	  cb(err, user)
+exports.create = (data, cb) => {
+	Users.findOne({email: data.email}, (err, user) => {
+		if(user) {
+			cb(err, {userExist: true}); 
+		} else {
+				Users.create({
+					id: md5(Date.now()),
+				  name: data.name,
+					login: data.login,
+					email: data.email,
+					pass: md5(data.pass),
+					tasks: [],
+				}, (err, user) => {
+					cb(err, user)
+				})
+			}
   });
 };
 

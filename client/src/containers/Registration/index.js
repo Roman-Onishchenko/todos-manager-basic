@@ -7,6 +7,7 @@ import Modal from 'material-ui/Modal';
 import Typography from 'material-ui/Typography';
 import * as actions from '../../reduxBase/actions/';
 import { Map } from 'immutable';
+import { Redirect } from 'react-router';
 
 import Inputs from '../../components/Identification/inputs';
 import RegistrationBtn from '../../components/Identification/Buttons/registration';
@@ -41,6 +42,7 @@ const styles = theme => ({
 class Registration extends React.Component {
   static propTypes = {
     userRegister: PropTypes.func,
+    usersReducer: PropTypes.object,
   }
 
   state = {
@@ -49,7 +51,14 @@ class Registration extends React.Component {
     userEmail: '',
     userPass: '',
     emailError: false,
+    redirect: false
   };
+
+  componentWillReceiveProps(nextProps) {
+    if(!nextProps.usersReducer.get('userExist')) {
+      this.setState({ redirect: true })
+    }
+  }
 
   handleChangeInput = (event) => {
     if(event.target.name === 'userEmail') this.setState({emailError: false});
@@ -66,11 +75,10 @@ class Registration extends React.Component {
     if(userEmail.search(filter) != -1) {
       this.props.userRegister(new Map
       ({
-        id: Date.now(),
-        userName,
-        userLogin,
-        userEmail,
-        userPass,
+        name: userName,
+        login: userLogin,
+        email: userEmail,
+        pass: userPass,
       }))
     } else {
         this.setState({emailError: true})
@@ -79,11 +87,20 @@ class Registration extends React.Component {
 
   render() {
     const { classes } = this.props;
+    const userExist = this.props.usersReducer.get('userExist');
+    const userId = this.props.usersReducer.get('user').get('id');
     const { userName, userLogin, userEmail, userPass } = this.state;
     const active = userName && userLogin && userEmail && userPass;
     const currentPath = this.props.match.path;
+    let redirect;
+    if(!!this.state.redirect) {
+      redirect = <Redirect to={`/table/${userId}`} />
+    } else {
+      redirect = '';
+    }
     return (
       <div>
+        {redirect}
         <Modal
           aria-labelledby="registration"
           aria-describedby="registration"
@@ -93,7 +110,11 @@ class Registration extends React.Component {
             <Typography className={classes.header} variant="title" id="modal-title">
              	Registration
             </Typography>
-            <Inputs handleChangeInput={this.handleChangeInput} emailError={this.state.emailError} />
+            <Inputs 
+              handleChangeInput={this.handleChangeInput} 
+              emailError={this.state.emailError}
+              userExist={userExist} 
+            />
             <div className="register-buttons">
             	<AuthorizationBtn />
             	<RegistrationBtn active={!!active} currentPath={currentPath} sendRegistrationData={this.sendRegistrationData} />
@@ -109,7 +130,7 @@ const RegistrationWrapped = withStyles(styles)(Registration);
 
 export default connect(
   state => ({
-     usersReducer: state.usersReducer
+     usersReducer: state.todoAppReducer
   }),
   dispatch => bindActionCreators(actions, dispatch)
 )(RegistrationWrapped);

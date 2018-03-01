@@ -2,6 +2,7 @@ import { takeEvery } from 'redux-saga/effects';
 
 import {
   USER_REGISTER,
+  USER_AUTH_ATTEMPT,
 	GET_TASKS,
   CREATE_TASK,
   DELETE_TASK,
@@ -10,6 +11,7 @@ import {
 } from '../reduxBase/constants';
 
 import userRegister from './users/userRegister';
+import userAuthorize from './users/userAuthorize';
 import getTasks from './tasks/getTasks';
 import createTask from './tasks/createTask';
 import deleteTask from './tasks/deleteTask';
@@ -18,6 +20,7 @@ import updateTask from './tasks/updateTask';
 
 function* mySaga() {
   yield takeEvery(USER_REGISTER, userRegister);
+  yield takeEvery(USER_AUTH_ATTEMPT, userAuthorize);
 	yield takeEvery(GET_TASKS, getTasks);
   yield takeEvery(CREATE_TASK, createTask);
   yield takeEvery(DELETE_TASK, deleteTask);

@@ -3,9 +3,11 @@ import * as actionTypes from '../constants';
 
 const initialState = new Map({
   user: new Map({
-    id: 1,
+    id: null,
     login: null,
   }),
+  userExist: false,
+  userNotAuth: false,
   tasks: new List([
     new Map({
       id: 1,
@@ -22,8 +24,18 @@ const initialState = new Map({
 export default function todoListReducer(state = initialState, action) {
    let taskIndex;
     switch (action.type) {
-      case actionTypes.ADD_USER:
-        return state.set('user', action.user);
+      case actionTypes.SET_USER:
+        return state.merge({
+          userExist: false,
+          userNotAuth: false,
+          user: action.user,
+        });
+
+      case actionTypes.USER_EXIST:
+        return state.set('userExist', true);
+
+      case actionTypes.USER_NOT_AUTH:
+        return state.set('userNotAuth', true);
 
       case actionTypes.SET_TASKS:
         return state.set('tasks', action.tasks);

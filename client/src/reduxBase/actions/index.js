@@ -90,23 +90,28 @@ export function userRegister(user) {
   };
 }
 
-export function addUser(user) {
+export function setUser(user) {
   return {
-    type: actionTypes.ADD_USER,
+    type: actionTypes.SET_USER,
     user,
   };
 }
 
-// export function userAuthAttempt(user) {
-//   return {
-//     type: actionTypes.USER_AUTH_ATTEMPT,
-//     user,
-//   };
-// }
+export function userExist() {
+  return {
+    type: actionTypes.USER_EXIST,
+  };
+}
 
-// export function userAuthorize(userId) {
-//   return {
-//     type: actionTypes.USER_AUTHORIZE,
-//     userId,
-//   };
-// }
+export function userAuthAttempt(user) {
+  return {
+    type: actionTypes.USER_AUTH_ATTEMPT,
+    user,
+  };
+}
+
+export function userNotAuth() {
+  return {
+    type: actionTypes.USER_NOT_AUTH,
+  };
+}

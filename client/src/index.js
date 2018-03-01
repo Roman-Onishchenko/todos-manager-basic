@@ -11,6 +11,7 @@ import mySaga from './sagas';
 import RootApp from './containers/RootApp';
 import Registration from './containers/Registration/';
 import Authorization from './containers/Authorization/';
+import './app.css';
 
 const sagaMiddleware = createSagaMiddleware();
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -29,7 +30,7 @@ ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
       <Switch>
-        <Route path='/table' component={RootApp}/>
+        <Route path='/table/:id' component={RootApp}/>
         <Route path='/registration' component={Registration}/>
         <Route path='/authorization' component={Authorization}/>
       </Switch>

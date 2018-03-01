@@ -10,6 +10,7 @@ const express = require('express'),
 
 router.post('/createUser', (req, res) => {
   User.create(req.body, (err, user) => {
+  	console.log(err, user);
     res.send(user)
   })
 })

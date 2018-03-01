@@ -18,7 +18,7 @@ import deleteTask from './tasks/deleteTask';
 import clearTasksList from './tasks/clearTasksList';
 import updateTask from './tasks/updateTask';
 
-function* mySaga() {
+function* todoAppSaga() {
   yield takeEvery(USER_REGISTER, userRegister);
   yield takeEvery(USER_AUTH_ATTEMPT, userAuthorize);
 	yield takeEvery(GET_TASKS, getTasks);
@@ -28,5 +28,5 @@ function* mySaga() {
   yield takeEvery(CLEAR_TASKS_LIST, clearTasksList);
 }
 
-export default mySaga;
+export default todoAppSaga;
 

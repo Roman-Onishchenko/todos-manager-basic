@@ -50,13 +50,29 @@ exports.createUser = (data, cb) => {
 					login: data.login,
 					email: data.email,
 					pass: md5(data.pass),
-					tasks: [],
+					tasks: [{}],
 				}, (err, user) => {
 					cb(err, user)
 				})
 			}
   });
 };
+
+exports.createTask = (id, newTask, cb) => {
+	const task = {
+		id: Date.now(),
+		text: newTask.text,
+		isDone: newTask.isDone,
+		priority: newTask.priority,
+		category: newTask.category
+	};
+
+	Users.update({ id }, { $push: { tasks: task } }, (err, status) => {
+		cb(err, status)
+  });
+};
+
+
 
 // exports.update = (data, cb) => {
 // 	Tasks.update({id: data.id}, data, (err, result) => {

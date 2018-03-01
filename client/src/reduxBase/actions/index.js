@@ -21,10 +21,11 @@ export function setErrorMessage(message) {
   };
 }
 
-export function createTask(task) {
+export function createTask(task, userId) {
   return {
     type: actionTypes.CREATE_TASK,
     task,
+    userId,
   };
 }
 
@@ -35,11 +36,12 @@ export function addTask(task) {
   };
 }
 
-export function updateTask(task, taskId) {
+export function updateTask(task, taskId, userId) {
   return {
     type: actionTypes.UPDATE_TASK,
     task,
     taskId,
+    userId,
   };
 }
 

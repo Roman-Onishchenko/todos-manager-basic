@@ -7,7 +7,7 @@ import createSagaMiddleware from 'redux-saga';
 import { Redirect } from 'react-router';
 
 import reducer from './reduxBase/reducers/index';
-import mySaga from './sagas';
+import todoAppSaga from './sagas';
 import RootApp from './containers/RootApp';
 import Registration from './containers/Registration/';
 import Authorization from './containers/Authorization/';
@@ -24,7 +24,7 @@ const store = createStore(
   )
 )
 
-sagaMiddleware.run(mySaga);
+sagaMiddleware.run(todoAppSaga);
 
 ReactDOM.render(
   <Provider store={store}>

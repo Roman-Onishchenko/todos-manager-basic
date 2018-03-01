@@ -40,6 +40,7 @@ class RootApp extends Component {
         {modalType === 'addTask' &&
           <AddModal
             open
+            userId={userId}
             hideTaskModal={this.props.hideTaskModal}
             createTask={this.props.createTask}
           />
@@ -47,6 +48,7 @@ class RootApp extends Component {
         {modalType === 'editTask' &&
           <EditModal
             open
+            userId={userId}
             activeTask={activeTask}
             hideTaskModal={this.props.hideTaskModal}
             updateTask={this.props.updateTask}

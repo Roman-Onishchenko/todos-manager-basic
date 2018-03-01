@@ -27,6 +27,6 @@ user {
 	tasks[]
 }
 
-db.test_invoice.update({user_id : 123456 , "items.item_name":"my_item_one"} , {$inc: {"items.$.price": 10}})
+https://docs.mongodb.com/manual/reference/operator/update/positional/
 
 <!-- https://github.com/blueimp/JavaScript-MD5 --> - hash

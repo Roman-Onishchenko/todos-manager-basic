@@ -41,6 +41,7 @@ class AddModal extends React.Component {
     createTask: PropTypes.func,
     hideTaskModal: PropTypes.func,
     classes: PropTypes.object.isRequired,
+    userId: PropTypes.string,
   }
 
   state = {
@@ -63,14 +64,14 @@ class AddModal extends React.Component {
 
   handleSaveTask = (e) => {
     e.preventDefault();
-    this.props.createTask(
-      new Map({
-        id: Date.now(),
-        text: this.state.inputValue,
-        isDone: 0,
-        priority: this.state.priorityValue,
-        category:this.state.timeValue,
-    }));
+    const task = new Map({
+      text: this.state.inputValue,
+      isDone: 0,
+      priority: this.state.priorityValue,
+      category:this.state.timeValue,
+    });
+    const { userId } = this.props;
+    this.props.createTask(task, userId);
     this.props.hideTaskModal();
   }
 

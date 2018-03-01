@@ -21,6 +21,13 @@ router.post('/createUser', (req, res) => {
   })
 })
 
+router.post('/createTask/:id', (req, res) => {
+  const id = req.params.id;
+  User.createTask(id, req.body, (err, status) => {
+    res.send(status)
+  })
+})
+
 // router.put('/tasks', (req, res) => {
 //   Task.update(req.body, (err, result) => {
 //     res.send(result)

@@ -2,23 +2,21 @@ import { fromJS } from 'immutable';
 
 class Api {
   
-  // get = (url, params) => {
-  //   return new Promise((resolve, reject) => {
-  //     let link = '/tasks';
-
-  //     fetch(link).then((response) => {
-  //       if (!response.ok) {
-  //         this.errorHandler(response, reject);
-  //         return;
-  //       }
-  //       response.json().then((jsonData) => {
-  //         resolve(fromJS(jsonData));
-  //       });
-  //     }, (response) => {
-  //       reject(response);
-  //     });
-  //   });
-  // }
+  get = (url, params) => {
+    // return new Promise((resolve, reject) => {
+    //   fetch(url, params).then((response) => {
+    //     if (!response.ok) {
+    //       this.errorHandler(response, reject);
+    //       return;
+    //     }
+    //     response.json().then((jsonData) => {
+    //       resolve(fromJS(jsonData));
+    //     });
+    //   }, (response) => {
+    //     reject(response);
+    //   });
+    // });
+  }
 
   save(url, data) {
     return new Promise((resolve, reject) => {

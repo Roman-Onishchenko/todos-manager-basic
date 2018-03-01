@@ -1,10 +1,10 @@
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import createSagaMiddleware from 'redux-saga';
+import { Redirect } from 'react-router';
 
 import reducer from './reduxBase/reducers/index';
 import mySaga from './sagas';
@@ -33,6 +33,7 @@ ReactDOM.render(
         <Route path='/table/:id' component={RootApp}/>
         <Route path='/registration' component={Registration}/>
         <Route path='/authorization' component={Authorization}/>
+        <Redirect to='/authorization' />
       </Switch>
     </BrowserRouter>
   </Provider>,

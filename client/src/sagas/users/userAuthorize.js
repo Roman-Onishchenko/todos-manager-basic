@@ -9,7 +9,7 @@ export default function* userAuthAttempt(action) {
   const authUser = action.user.toJS();
   let user;
   try {
-    const response = yield call(api.get, '/authUser', authUser);
+    const response = yield call(api.save, '/authUser', authUser);
     if(response.data.notAuth) {
       yield put(userNotAuth());
     } else {

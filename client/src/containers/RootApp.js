@@ -25,6 +25,7 @@ class RootApp extends Component {
   
   render() {
     const idsEqual = (this.props.match.params.id === this.props.tasksReducer.get('user').get('id'));
+    const userLogin = this.props.tasksReducer.get('user').get('login');
     const tasksList = this.props.tasksReducer.get('tasks');
     const errorMessage = this.props.tasksReducer.get('errorMessage');
     const modalType = this.props.tasksReducer.get('modalType');
@@ -53,6 +54,7 @@ class RootApp extends Component {
         {idsEqual && 
           <TasksTable
             errorMessage={errorMessage}
+            userLogin={userLogin}
             tasksList={tasksList}
             showTaskAddModal={this.props.showTaskAddModal}
             showTaskEditModal={this.props.showTaskEditModal}

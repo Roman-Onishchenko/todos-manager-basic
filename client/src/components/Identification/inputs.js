@@ -22,7 +22,8 @@ function Inputs(props) {
     classes, 
     currentPath, 
     emailError, 
-    userExist 
+    userExist, 
+    userNotAuth 
   } = props;
 
   let inputs;
@@ -37,7 +38,7 @@ function Inputs(props) {
           placeholder="mail@.com"
           className={classes.textField}
           margin="normal"
-          error={false}
+          error={userNotAuth}
         />
         <TextField
           onChange={props.handleChangeInput}
@@ -49,7 +50,7 @@ function Inputs(props) {
           type="password"
           autoComplete="current-password"
           margin="normal"
-          error={false}
+          error={userNotAuth}
         />
       </form>
   } else {

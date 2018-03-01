@@ -8,6 +8,7 @@ import Typography from 'material-ui/Typography';
 import * as actions from '../../reduxBase/actions/';
 import { Map } from 'immutable';
 
+import TableRedirect from '../../components/Identification/redirect';
 import Inputs from '../../components/Identification/inputs';
 import RegistrationBtn from '../../components/Identification/Buttons/registration';
 import AuthorizationBtn from '../../components/Identification/Buttons/authorization';
@@ -46,7 +47,14 @@ class Authorization extends React.Component {
   state = {
     userEmail: '',
     userPass: '',
+    redirect: false,
   };
+
+  componentWillReceiveProps(nextProps) {
+    if(!nextProps.usersReducer.get('userNotAuth')) {
+      this.setState({ redirect: true })
+    }
+  }
 
   handleChangeInput = (event) => {
     if(event.target.value.length > 0) {
@@ -60,19 +68,28 @@ class Authorization extends React.Component {
     const { userEmail, userPass } = this.state;
     this.props.userAuthAttempt(new Map
       ({
-        userEmail,
-        userPass,
+        email: userEmail,
+        pass: userPass,
       })
     )
   }
 
   render() {
     const { classes } = this.props;
+    const userNotAuth = this.props.usersReducer.get('userNotAuth');
+    const userId = this.props.usersReducer.get('user').get('id');
     const { userEmail, userPass } = this.state;
     const active = userEmail && userPass;
     const currentPath = this.props.match.path;
+    let redirect;
+    if(!!this.state.redirect) {
+      redirect = <TableRedirect userId={userId} />
+    } else {
+      redirect = '';
+    }
     return (
       <div>
+        {redirect}
         <Modal
           aria-labelledby="registration"
           aria-describedby="registration"
@@ -82,7 +99,11 @@ class Authorization extends React.Component {
             <Typography className={classes.header} variant="title" id="modal-title">
               Authorization
             </Typography>
-            <Inputs handleChangeInput={this.handleChangeInput} currentPath={currentPath} />
+            <Inputs 
+              handleChangeInput={this.handleChangeInput} 
+              currentPath={currentPath} 
+              userNotAuth={userNotAuth} 
+            />
             <div className="register-buttons">
               <RegistrationBtn />
               <AuthorizationBtn active={!!active} currentPath={currentPath} sendAuthorizationData={this.sendAuthorizationData} />
@@ -98,7 +119,7 @@ const AuthorizationWrapped = withStyles(styles)(Authorization);
 
 export default connect(
   state => ({
-     usersReducer: state.usersReducer
+     usersReducer: state.todoAppReducer
   }),
   dispatch => bindActionCreators(actions, dispatch)
 )(AuthorizationWrapped);

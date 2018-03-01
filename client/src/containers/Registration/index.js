@@ -7,8 +7,8 @@ import Modal from 'material-ui/Modal';
 import Typography from 'material-ui/Typography';
 import * as actions from '../../reduxBase/actions/';
 import { Map } from 'immutable';
-import { Redirect } from 'react-router';
 
+import TableRedirect from '../../components/Identification/redirect';
 import Inputs from '../../components/Identification/inputs';
 import RegistrationBtn from '../../components/Identification/Buttons/registration';
 import AuthorizationBtn from '../../components/Identification/Buttons/authorization';
@@ -94,7 +94,7 @@ class Registration extends React.Component {
     const currentPath = this.props.match.path;
     let redirect;
     if(!!this.state.redirect) {
-      redirect = <Redirect to={`/table/${userId}`} />
+      redirect = <TableRedirect userId={userId} />
     } else {
       redirect = '';
     }

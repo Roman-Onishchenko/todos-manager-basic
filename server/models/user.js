@@ -23,13 +23,17 @@ const user = {
 const userScheme = new Schema(user, {versionKey: false});
 const Users = mongoose.model('Users', userScheme);
 
-// exports.get = (cb) => {
-// 	Tasks.find({}, (err, tasks) => {
-// 		cb(err, tasks)
-// 	});
-// }
+exports.checkAuth = (data, cb) => {
+	Users.findOne({email: data.email, pass: md5(data.pass)}, (err, user) => {
+		if(!user) {
+			cb(err, {notAuth: true}); 
+		} else {
+				cb(err, user)
+			}
+		})
+	}
 
-exports.create = (data, cb) => {
+exports.createUser = (data, cb) => {
 	Users.findOne({email: data.email}, (err, user) => {
 		if(user) {
 			cb(err, {userExist: true}); 

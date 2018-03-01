@@ -24,6 +24,7 @@ export default class TasksTable extends Component {
     updateTask: PropTypes.func,
     deleteTask: PropTypes.func,
     errorMessage: PropTypes.string,
+    userLogin: PropTypes.string,
   }
 
   state = {
@@ -95,7 +96,7 @@ export default class TasksTable extends Component {
 
     return (
       <Paper className="paper">
-        <GreetingMessage />
+        <GreetingMessage userLogin={this.props.userLogin} />
         {this.props.errorMessage && <ErrorMessage errorMessage={this.props.errorMessage} />}
         <AddTaskBtn showTaskAddModal={this.props.showTaskAddModal} />
         <div className="table-wrapper">

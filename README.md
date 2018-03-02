@@ -9,7 +9,7 @@
   + React router
   + Material UI
   
- + Server technologies:
++ Server technologies:
   + Node.js
   + Express.js
   + Mongoose

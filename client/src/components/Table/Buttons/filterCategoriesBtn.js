@@ -4,7 +4,11 @@ import PropTypes from 'prop-types';
 
 export default function FilterCategoriesBtn(props) {
   return (
-    <Button variant="raised" className="button button_grey button_grey_margin-right" onClick={props.changeFiltersVisibility}>
+    <Button 
+    	variant="raised" 
+    	className="button button_grey button_grey_margin-right" 
+    	onClick={props.changeFiltersVisibility}
+    >
       {props.filtersOpened ? "Close Filters" : "Open Filters"}
     </Button>
   );

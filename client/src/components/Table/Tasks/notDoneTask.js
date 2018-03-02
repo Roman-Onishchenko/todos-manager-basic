@@ -52,4 +52,5 @@ NotDoneTask.propTypes = {
   markDoneTask: PropTypes.func,
   showTaskEditModal: PropTypes.func,
   deleteTask: PropTypes.func,
+  userId: PropTypes.string,
 };

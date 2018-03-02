@@ -93,7 +93,12 @@ export default class TasksTable extends Component {
         this.getTaskByPriority(priority, category, taskDone).map(task => 
           <DoneTask key={task.get('id')} task={task} />)
     } else {
-      tableContent = <TableRow><TableCell className="empty-tablecell"><EmptyTableImg /></TableCell></TableRow>
+      tableContent = 
+        <TableRow>
+          <TableCell className="empty-tablecell">
+            <EmptyTableImg />
+          </TableCell>
+        </TableRow>
     }
 
     return (

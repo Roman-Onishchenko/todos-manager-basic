@@ -8,6 +8,7 @@ import Typography from 'material-ui/Typography';
 import * as actions from '../../reduxBase/actions/';
 import { Map } from 'immutable';
 
+import TableRedirect from '../../components/Identification/redirect';
 import Inputs from '../../components/Identification/inputs';
 import RegistrationBtn from '../../components/Identification/Buttons/registration';
 import AuthorizationBtn from '../../components/Identification/Buttons/authorization';
@@ -41,6 +42,7 @@ const styles = theme => ({
 class Registration extends React.Component {
   static propTypes = {
     userRegister: PropTypes.func,
+    usersReducer: PropTypes.object,
   }
 
   state = {
@@ -48,9 +50,18 @@ class Registration extends React.Component {
     userLogin: '',
     userEmail: '',
     userPass: '',
+    emailError: false,
+    redirect: false
   };
 
+  componentWillReceiveProps(nextProps) {
+    if(!nextProps.usersReducer.get('userExist')) {
+      this.setState({ redirect: true })
+    }
+  }
+
   handleChangeInput = (event) => {
+    if(event.target.name === 'userEmail') this.setState({emailError: false});
     if(event.target.value.length > 0) {
       this.setState({ [event.target.name]: event.target.value })
     } else {
@@ -60,24 +71,36 @@ class Registration extends React.Component {
 
   sendRegistrationData = () => {
     const { userName, userLogin, userEmail, userPass } = this.state;
-    this.props.userRegister(new Map
+    const filter = /^\s*[\w\-\+_]+(\.[\w\-\+_]+)*\@[\w\-\+_]+\.[\w\-\+_]+(\.[\w\-\+_]+)*\s*$/;
+    if(userEmail.search(filter) != -1) {
+      this.props.userRegister(new Map
       ({
-        id: Date.now(),
-        userName,
-        userLogin,
-        userEmail,
-        userPass,
-      })
-    )
+        name: userName,
+        login: userLogin,
+        email: userEmail,
+        pass: userPass,
+      }))
+    } else {
+        this.setState({emailError: true})
+      }
   }
 
   render() {
     const { classes } = this.props;
+    const userExist = this.props.usersReducer.get('userExist');
+    const userId = this.props.usersReducer.get('user').get('id');
     const { userName, userLogin, userEmail, userPass } = this.state;
     const active = userName && userLogin && userEmail && userPass;
     const currentPath = this.props.match.path;
+    let redirect;
+    if(!!this.state.redirect) {
+      redirect = <TableRedirect userId={userId} />
+    } else {
+      redirect = '';
+    }
     return (
       <div>
+        {redirect}
         <Modal
           aria-labelledby="registration"
           aria-describedby="registration"
@@ -87,7 +110,11 @@ class Registration extends React.Component {
             <Typography className={classes.header} variant="title" id="modal-title">
              	Registration
             </Typography>
-            <Inputs handleChangeInput={this.handleChangeInput} />
+            <Inputs 
+              handleChangeInput={this.handleChangeInput} 
+              emailError={this.state.emailError}
+              userExist={userExist} 
+            />
             <div className="register-buttons">
             	<AuthorizationBtn />
             	<RegistrationBtn active={!!active} currentPath={currentPath} sendRegistrationData={this.sendRegistrationData} />
@@ -103,7 +130,7 @@ const RegistrationWrapped = withStyles(styles)(Registration);
 
 export default connect(
   state => ({
-     usersReducer: state.usersReducer
+     usersReducer: state.todoAppReducer
   }),
   dispatch => bindActionCreators(actions, dispatch)
 )(RegistrationWrapped);

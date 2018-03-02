@@ -9,9 +9,9 @@ import {
 
 export default function* updateTask(action) {
   const api = new Api();
-  const updateTask = action.task.toJS();
+  const updatedTask = action.task.toJS();
   try {
-    yield call(api.save, updateTask.id, updateTask);
+    yield call(api.save, `/updateTask/${action.userId}`, updatedTask);
   } catch (response) {
     yield put(setErrorMessage(response.error));
     return;

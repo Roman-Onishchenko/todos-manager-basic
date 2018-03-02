@@ -9,7 +9,7 @@ export default function AuthorizationBtn(props) {
     authBtn = 
       <Button 
         disabled={!props.active}
-        onClick={props.sendRegistrationData}
+        onClick={props.sendAuthorizationData}
         variant="raised" 
         color="primary" 
         className="button"

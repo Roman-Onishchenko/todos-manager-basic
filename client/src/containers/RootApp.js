@@ -24,6 +24,9 @@ class RootApp extends Component {
   }
   
   render() {
+    const idsEqual = (this.props.match.params.id === localStorage.getItem('uid'));
+    const userLogin = this.props.tasksReducer.get('user').get('login');
+    const userId = this.props.tasksReducer.get('user').get('id');
     const tasksList = this.props.tasksReducer.get('tasks');
     const errorMessage = this.props.tasksReducer.get('errorMessage');
     const modalType = this.props.tasksReducer.get('modalType');
@@ -37,6 +40,7 @@ class RootApp extends Component {
         {modalType === 'addTask' &&
           <AddModal
             open
+            userId={userId}
             hideTaskModal={this.props.hideTaskModal}
             createTask={this.props.createTask}
           />
@@ -44,22 +48,27 @@ class RootApp extends Component {
         {modalType === 'editTask' &&
           <EditModal
             open
+            userId={userId}
             activeTask={activeTask}
             hideTaskModal={this.props.hideTaskModal}
             updateTask={this.props.updateTask}
           />
         }
-        <TasksTable
-          errorMessage={errorMessage}
-          tasksList={tasksList}
-          showTaskAddModal={this.props.showTaskAddModal}
-          showTaskEditModal={this.props.showTaskEditModal}
-          deleteTask={this.props.deleteTask}
-          updateTask={this.props.updateTask}
-          doneTask={this.props.doneTask}
-          getTasks={this.props.getTasks}
-          clearTasksList={this.props.clearTasksList}
-        />
+        {idsEqual && 
+          <TasksTable
+            errorMessage={errorMessage}
+            userLogin={userLogin}
+            userId={localStorage.getItem('uid')}
+            tasksList={tasksList}
+            showTaskAddModal={this.props.showTaskAddModal}
+            showTaskEditModal={this.props.showTaskEditModal}
+            deleteTask={this.props.deleteTask}
+            updateTask={this.props.updateTask}
+            doneTask={this.props.doneTask}
+            getTasks={this.props.getTasks}
+            clearTasksList={this.props.clearTasksList}
+          />
+        }
       </div>
     );
   }
@@ -67,7 +76,7 @@ class RootApp extends Component {
 
 export default connect(
   state => ({
-     tasksReducer: state.todoListReducer
+     tasksReducer: state.todoAppReducer
   }),
   dispatch => bindActionCreators(actions, dispatch)
 )(RootApp);

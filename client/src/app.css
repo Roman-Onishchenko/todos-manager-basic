@@ -13,7 +13,7 @@ legend > span {
   overflow: auto;
 }
 .paper {
-  width: 95%;
+  width: 90%;
   margin: 60px auto;
   overflow-x: auto;
 }
@@ -164,7 +164,7 @@ a {
 .greeting-message {
   position: absolute;
   top: 0;
-  right: 3%;
+  right: 5.5%;
   color: brown;
   padding: 2px 5px;
   border-radius: 4px;
@@ -179,8 +179,11 @@ a {
   right: 5%;
   width: 25%;
 }
-
-@media only screen and (max-width: 950px) {
+.auth-login {
+  color: brown;
+  font-size: 1.1em;
+}
+@media only screen and (max-width: 900px) {
   .table__iconcell{
     width: 50px;
   }

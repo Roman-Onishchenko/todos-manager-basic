@@ -2,11 +2,9 @@ import { fromJS } from 'immutable';
 
 class Api {
   
-  get = (url, params) => {
+  get = (url) => {
     return new Promise((resolve, reject) => {
-      let link = '/tasks';
-
-      fetch(link).then((response) => {
+      fetch(url).then((response) => {
         if (!response.ok) {
           this.errorHandler(response, reject);
           return;
@@ -20,18 +18,17 @@ class Api {
     });
   }
 
-  save(taskId, task) {
+  save(url, data) {
     return new Promise((resolve, reject) => {
-      let url = '/tasks';
       const params = {
         method: "post",
-        body: JSON.stringify(task),
+        body: JSON.stringify(data),
         headers: {
           "Accept": "application/json",
           "Content-Type": "application/json"
         }
       };
-      if (taskId) {
+      if (data.id) {
         params.method = "put";
       }
 
@@ -53,30 +50,17 @@ class Api {
     });
   }
 
-  remove(taskId, isDone, category) {
+  remove(url, data) {
     return new Promise((resolve, reject) => {
-      const url = '/tasks';
-      let params;
-      if(taskId) {
-        params = {
-          method: "delete",
-          body: JSON.stringify({id: taskId}),
-          headers: {
-            "Accept": "application/json",
-            "Content-Type": "application/json"
-          }
-        };
-      } else {
-        params = {
-          method: "delete",
-          body: JSON.stringify({isDone, category}),
-          headers: {
-            "Accept": "application/json",
-            "Content-Type": "application/json"
-          }
-        };
-      }
-      
+      const params = {
+        method: "delete",
+        body: JSON.stringify(data),
+        headers: {
+          "Accept": "application/json",
+          "Content-Type": "application/json"
+        }
+      };
+
       fetch(url, params).then((response) => {
         response.json().then((jsonData) => {
           const statusCode = response.status;

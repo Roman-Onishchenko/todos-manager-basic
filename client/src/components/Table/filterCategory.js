@@ -129,7 +129,7 @@ FilterCategory.propTypes = {
   tasksList: PropTypes.object,
   taskDone: PropTypes.string,
   changeFilterCriteria: PropTypes.func,
-  classes: PropTypes.object.isRequired,
+  classes: PropTypes.object
 };
 
 export default withStyles(styles)(FilterCategory);

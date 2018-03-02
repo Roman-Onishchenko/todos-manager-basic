@@ -24,6 +24,8 @@ export default class TasksTable extends Component {
     updateTask: PropTypes.func,
     deleteTask: PropTypes.func,
     errorMessage: PropTypes.string,
+    userLogin: PropTypes.string,
+    userId: PropTypes.string,
   }
 
   state = {
@@ -34,7 +36,7 @@ export default class TasksTable extends Component {
   };
 
   componentDidMount() {
-    this.props.getTasks();
+    this.props.getTasks(this.props.userId);
   }
 
   changeFiltersVisibility = () => {
@@ -53,7 +55,7 @@ export default class TasksTable extends Component {
         isDone: 1,
       })
     );
-    this.props.updateTask(doneTask, id);
+    this.props.updateTask(doneTask, this.props.userId);
     this.props.doneTask(id);
   }
 
@@ -83,6 +85,7 @@ export default class TasksTable extends Component {
             task={task}
             showTaskEditModal={this.props.showTaskEditModal}
             markDoneTask={this.markDoneTask}
+            userId={this.props.userId}
             deleteTask={this.props.deleteTask}
           />)
     } else if(Number(taskDone) === 1 && this.getTaskByPriority(priority, category, taskDone).size > 0) {
@@ -90,12 +93,17 @@ export default class TasksTable extends Component {
         this.getTaskByPriority(priority, category, taskDone).map(task => 
           <DoneTask key={task.get('id')} task={task} />)
     } else {
-      tableContent = <TableRow><TableCell className="empty-tablecell"><EmptyTableImg /></TableCell></TableRow>
+      tableContent = 
+        <TableRow>
+          <TableCell className="empty-tablecell">
+            <EmptyTableImg />
+          </TableCell>
+        </TableRow>
     }
 
     return (
       <Paper className="paper">
-        <GreetingMessage />
+        <GreetingMessage userLogin={this.props.userLogin} />
         {this.props.errorMessage && <ErrorMessage errorMessage={this.props.errorMessage} />}
         <AddTaskBtn showTaskAddModal={this.props.showTaskAddModal} />
         <div className="table-wrapper">
@@ -107,7 +115,12 @@ export default class TasksTable extends Component {
         </div>
         <div className="buttons-container">
           <FilterCategoriesBtn filtersOpened={this.state.filtersOpened} changeFiltersVisibility={this.changeFiltersVisibility} />
-          <ClearTasksBtn clearTasksList={this.props.clearTasksList} category={category} isDone={Number(taskDone)} />
+          <ClearTasksBtn 
+            clearTasksList={this.props.clearTasksList} 
+            category={category} 
+            isDone={Number(taskDone)} 
+            userId={this.props.userId}
+          />
         </div>
         {this.state.filtersOpened && 
           <FilterCategory 

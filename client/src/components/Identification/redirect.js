@@ -9,5 +9,5 @@ export default function TableRedirect(props) {
 }
 
 TableRedirect.propTypes = {
- userId: PropTypes.string,
+  userId: PropTypes.string,
 };

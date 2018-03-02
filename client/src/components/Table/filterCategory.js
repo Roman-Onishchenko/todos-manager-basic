@@ -61,6 +61,48 @@ function FilterCategory(props) {
         >
         </Badge>
       </span>;
+  } else {
+    const dayTasksNum = props.tasksList.filter(
+      task => task.get('category') === 'day').filter(
+      task => task.get('isDone') === 1).size;
+    labelDay = 
+      <span>
+        Day 
+        <Badge 
+          className={classes.margin} 
+          badgeContent={`${dayTasksNum}`} 
+          color="primary"
+        >
+        </Badge>
+      </span>;
+
+    const weekTasksNum = props.tasksList.filter(
+      task => task.get('category') === 'week').filter(
+      task => task.get('isDone') === 1).size;
+    labelWeek = 
+      <span>
+        Week 
+        <Badge 
+          className={classes.margin} 
+          badgeContent={`${weekTasksNum}`} 
+          color="primary"
+        >
+        </Badge>
+      </span>;
+    
+    const monthTasksNum = props.tasksList.filter(
+      task => task.get('category') === 'month').filter(
+      task => task.get('isDone') === 1).size;
+    labelMonth = 
+      <span>
+        Month 
+        <Badge 
+          className={classes.margin} 
+          badgeContent={`${monthTasksNum}`} 
+          color="primary"
+        >
+        </Badge>
+      </span>;
   }
   
   return (
@@ -129,7 +171,7 @@ FilterCategory.propTypes = {
   tasksList: PropTypes.object,
   taskDone: PropTypes.string,
   changeFilterCriteria: PropTypes.func,
-  classes: PropTypes.object.isRequired,
+  classes: PropTypes.object
 };
 
 export default withStyles(styles)(FilterCategory);

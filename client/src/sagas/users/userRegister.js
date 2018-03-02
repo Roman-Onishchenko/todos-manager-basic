@@ -14,6 +14,8 @@ export default function* userRegister(action) {
       yield put(userExist());
     } else {
       user = fromJS(response.data);
+      localStorage.setItem('uId', user.get('id'));
+      localStorage.setItem('uLogin', user.get('login'));
       const newUser = fromJS({
         id: user.get('id'),
         login: user.get('login')

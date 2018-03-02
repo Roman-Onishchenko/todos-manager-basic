@@ -109,6 +109,9 @@ function Inputs(props) {
 Inputs.propTypes = {
   classes: PropTypes.object.isRequired,
   emailError: PropTypes.bool,
+  userExist: PropTypes.bool,
+  userNotAuth: PropTypes.bool,
+  currentPath: PropTypes.string,
 };
 
 export default withStyles(styles)(Inputs);

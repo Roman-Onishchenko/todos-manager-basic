@@ -16,8 +16,8 @@ router.post('/authUser', (req, res) => {
 })
 
 router.post('/createUser', (req, res) => {
-  User.createUser(req.body, (err, user) => {
-    res.send(user)
+  User.createUser(req.body, (err, status) => {
+    res.send(status)
   })
 })
 
@@ -28,16 +28,18 @@ router.post('/createTask/:id', (req, res) => {
   })
 })
 
-// router.put('/tasks', (req, res) => {
-//   Task.update(req.body, (err, result) => {
-//     res.send(result)
-//   })
-// })
+router.put('/updateTask/:id', (req, res) => {
+  const id = req.params.id;
+  User.updateTask(id, req.body, (err, result) => {
+    res.send(result)
+  })
+})
 
-// router.delete('/tasks', (req, res) => {
-//   Task.delete(req.body, (err, result) => {
-//     res.send(result)
-//   })
-// })
+router.delete('/deleteTask/:id', (req, res) => {
+  const id = req.params.id;
+  User.deleteTask(id, req.body, (err, result) => {
+    res.send(result)
+  })
+})
 
 module.exports = router

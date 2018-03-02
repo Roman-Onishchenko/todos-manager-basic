@@ -44,7 +44,7 @@ export default function todoListReducer(state = initialState, action) {
         return state.updateIn(['tasks'], tasks => tasks.push(action.task));
 
       case actionTypes.UPDATE_TASK:
-        taskIndex = state.get('tasks').findIndex(task => (task.get('id') === action.taskId));
+        taskIndex = state.get('tasks').findIndex(task => (task.get('id') === action.task.get('id')));
         if (taskIndex === -1) {
           return state;
         }

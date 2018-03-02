@@ -1,32 +1,13 @@
-что нужно
-1 зарегистрировать юзера
- -- написать сагу
- -- написать апи
- -- внести в бд данные юзера
- -- сделать редирект на авторизацию
- -- если юзер существует, то не редиректить и выделить красным соотв-е поле
-2 авторизовать юзера
-  -- написать сагу
-  -- написать апи
-  -- найти в бд юзера с нужными полями и 
-    -- если юзер там есть, то сделать редирект на тейбл с  роутом   в виде тейбл плюс зашифрованный айди юзера
-    -- если нет такого юзера то не делать редирект и написать что юзер не найден
-3 прописать роут с учетом айди юзера
 
-4 связать таски в бд с конкретным юзером
+https://devcenter.heroku.com/articles/getting-started-with-nodejs#set-up
 
-5 переписать фронт под новый тип данных
- -- в сторе и редьюсерах
- -- в экшнах добавить везде юзерз айди
+https://coderjourney.com/tutorials/how-to-deploy-a-react-application/
 
-user {
-	id:
-	name:
-	email:
-	pass:
-	tasks[]
-}
+https://medium.com/@baphemot/understanding-react-deployment-5a717d4378fd
 
-https://docs.mongodb.com/manual/reference/operator/update/positional/
+https://codebrahma.com/deploy-react-application-depth-overview-various-options-deploy/
 
-<!-- https://github.com/blueimp/JavaScript-MD5 --> - hash
+https://www.fullstackreact.com/articles/deploying-a-react-app-with-a-server/
+
+npm install -g pushstate-server
+pushstate-server build

@@ -17,7 +17,7 @@ const user = {
 		isDone: Number,
 		priority: String,
 		category: String
-	}]
+	}],
 };
 
 const userScheme = new Schema(user, {versionKey: false});
@@ -72,22 +72,20 @@ exports.createTask = (id, newTask, cb) => {
   });
 };
 
+exports.updateTask = (id, task, cb) => {
+	Users.updateOne({ id, "tasks.id": task.id}, { $set: { "tasks.$": task }}, (err, status) => {
+	  cb(err, status)
+  });
+};
 
-
-// exports.update = (data, cb) => {
-// 	Tasks.update({id: data.id}, data, (err, result) => {
-// 		cb(err, result)
-// 	});
-// };
-
-// exports.delete = (data, cb) => {
-// 	if(data.id) {
-// 		Tasks.remove({id: data.id}, (err, result) => {
-// 		cb(err, result)
-// 	});
-// 	} else {
-// 		Tasks.remove({isDone: data.isDone, category: data.category}, (err, result) => {
-// 			cb(err, result)
-// 		});
-// 	}
-// };
+exports.deleteTask = (id, data, cb) => {
+	if(data.id) {
+		Users.update({ id }, { $pull: { tasks: { id: data.id } }}, (err, status) => {
+		  cb(err, status)
+	  });
+	} else {
+		Users.update({ id }, { $pull: { tasks: { isDone: data.isDone, category: data.category } }}, (err, status) => {
+		  cb(err, status)
+	  });
+	}
+};

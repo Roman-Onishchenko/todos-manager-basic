@@ -13,9 +13,8 @@ legend > span {
   overflow: auto;
 }
 .paper {
-  width: 95%;
-  margin: auto;
-  margin-top: 50px;
+  width: 90%;
+  margin: 60px auto;
   overflow-x: auto;
 }
 .table{
@@ -73,6 +72,12 @@ a {
   text-decoration: none;
   color: inherit;
 }
+ span[class^="MuiBadge-root"] span { 
+  background-color: #EF5350;
+  width: 21px;
+  height: 21px;
+  right: -8px;
+ }
 .button_grey {
   background-color: white !important;
   color: black !important;
@@ -157,10 +162,16 @@ a {
   margin-right: 25px !important;
 }
 .greeting-message {
-  width: 200px;
   position: absolute;
-  text-align: center;
-  color: black;
+  top: 0;
+  right: 5.5%;
+  color: brown;
+  padding: 2px 5px;
+  border-radius: 4px;
+  background-color: white;
+}
+.auth-login {
+  font-size: 1.1em;
 }
 .error-message {
   color: red;

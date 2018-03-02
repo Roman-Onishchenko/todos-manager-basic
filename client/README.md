@@ -7,5 +7,7 @@ https://medium.com/@baphemot/understanding-react-deployment-5a717d4378fd
 
 https://codebrahma.com/deploy-react-application-depth-overview-various-options-deploy/
 
+https://www.fullstackreact.com/articles/deploying-a-react-app-with-a-server/
+
 npm install -g pushstate-server
 pushstate-server build

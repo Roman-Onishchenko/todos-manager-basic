@@ -1,6 +1,5 @@
 ## Full stack todoList app
-
-[Imgur](https://i.imgur.com/Tx2H6q4.png)
+![Imgur](https://i.imgur.com/Tx2H6q4.png)
 
 + Client technologies:
   + HTML/CSS

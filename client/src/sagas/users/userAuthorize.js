@@ -14,7 +14,8 @@ export default function* userAuthAttempt(action) {
       yield put(userNotAuth());
     } else {
       user = fromJS(response.data);
-      localStorage.setItem('uid', user.get('id'));
+      localStorage.setItem('uId', user.get('id'));
+      localStorage.setItem('uLogin', user.get('login'));
       const authUser = fromJS({
         id: user.get('id'),
         login: user.get('login')

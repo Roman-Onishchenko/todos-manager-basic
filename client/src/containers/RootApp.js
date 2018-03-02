@@ -24,8 +24,7 @@ class RootApp extends Component {
   }
   
   render() {
-    const idsEqual = (this.props.match.params.id === localStorage.getItem('uid'));
-    const userLogin = this.props.tasksReducer.get('user').get('login');
+    const idsEqual = (this.props.match.params.id === localStorage.getItem('uId'));
     const userId = this.props.tasksReducer.get('user').get('id');
     const tasksList = this.props.tasksReducer.get('tasks');
     const errorMessage = this.props.tasksReducer.get('errorMessage');
@@ -57,8 +56,8 @@ class RootApp extends Component {
         {idsEqual && 
           <TasksTable
             errorMessage={errorMessage}
-            userLogin={userLogin}
-            userId={localStorage.getItem('uid')}
+            userLogin={localStorage.getItem('uLogin')}
+            userId={localStorage.getItem('uId')}
             tasksList={tasksList}
             showTaskAddModal={this.props.showTaskAddModal}
             showTaskEditModal={this.props.showTaskEditModal}

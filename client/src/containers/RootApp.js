@@ -25,7 +25,7 @@ class RootApp extends Component {
   
   render() {
     const idsEqual = (this.props.match.params.id === localStorage.getItem('uId'));
-    const userId = this.props.tasksReducer.get('user').get('id');
+    const userId = localStorage.getItem('uId');
     const tasksList = this.props.tasksReducer.get('tasks');
     const errorMessage = this.props.tasksReducer.get('errorMessage');
     const modalType = this.props.tasksReducer.get('modalType');
@@ -57,7 +57,7 @@ class RootApp extends Component {
           <TasksTable
             errorMessage={errorMessage}
             userLogin={localStorage.getItem('uLogin')}
-            userId={localStorage.getItem('uId')}
+            userId={userId}
             tasksList={tasksList}
             showTaskAddModal={this.props.showTaskAddModal}
             showTaskEditModal={this.props.showTaskEditModal}

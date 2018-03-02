@@ -75,9 +75,8 @@ class EditModal extends React.Component {
           category:this.state.timeValue,
         })
       );
-      const taskId = this.props.activeTask.get('id');
       const { userId } = this.props;
-      this.props.updateTask(updatedTask, taskId, userId);
+      this.props.updateTask(updatedTask, userId);
       this.props.hideTaskModal();
     }
   }

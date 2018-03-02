@@ -55,7 +55,7 @@ export default class TasksTable extends Component {
         isDone: 1,
       })
     );
-    this.props.updateTask(doneTask, id);
+    this.props.updateTask(doneTask, this.props.userId);
     this.props.doneTask(id);
   }
 
@@ -110,7 +110,12 @@ export default class TasksTable extends Component {
         </div>
         <div className="buttons-container">
           <FilterCategoriesBtn filtersOpened={this.state.filtersOpened} changeFiltersVisibility={this.changeFiltersVisibility} />
-          <ClearTasksBtn clearTasksList={this.props.clearTasksList} category={category} isDone={Number(taskDone)} />
+          <ClearTasksBtn 
+            clearTasksList={this.props.clearTasksList} 
+            category={category} 
+            isDone={Number(taskDone)} 
+            userId={this.props.userId}
+          />
         </div>
         {this.state.filtersOpened && 
           <FilterCategory 

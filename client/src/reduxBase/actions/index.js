@@ -36,11 +36,10 @@ export function addTask(task) {
   };
 }
 
-export function updateTask(task, taskId, userId) {
+export function updateTask(task, userId) {
   return {
     type: actionTypes.UPDATE_TASK,
     task,
-    taskId,
     userId,
   };
 }
@@ -60,11 +59,12 @@ export function deleteTask(taskId, userId) {
   };
 }
 
-export function clearTasksList(isDone, category) {
+export function clearTasksList(isDone, category, userId) {
   return {
     type: actionTypes.CLEAR_TASKS_LIST,
     isDone,
     category,
+    userId,
   };
 }
 

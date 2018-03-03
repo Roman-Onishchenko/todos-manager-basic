@@ -8,13 +8,13 @@ legend > span {
   display: none;
 }
 .table-wrapper {
-  min-height: 420px;
-  max-height: 420px;
+  min-height: 410px;
+  max-height: 410px;
   overflow: auto;
 }
 .paper {
   width: 90%;
-  margin: 60px auto;
+  margin: 15px auto;
   overflow-x: auto;
 }
 .table{
@@ -38,7 +38,7 @@ legend > span {
   border-bottom: none !important;
 }
 .table__maincell{
-  padding: 10px 5px 10px 15px !important;
+  padding: 0 15px 0 20px !important;
   font-family: Rubik;
   font-weight: 500;
   font-size: 14px !important;
@@ -163,12 +163,10 @@ a {
 }
 .greeting-message {
   position: absolute;
-  top: 0;
   right: 5.5%;
   color: brown;
   padding: 2px 5px;
   border-radius: 4px;
-  background-color: white;
 }
 .auth-login {
   font-size: 1.1em;
@@ -183,7 +181,7 @@ a {
   color: brown;
   font-size: 1.1em;
 }
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 800px) {
   .table__iconcell{
     width: 50px;
   }

@@ -61,6 +61,9 @@ legend > span {
   color: #1B5E20;
   margin: 0;
 }
+.hidden {
+  visibility: hidden !important;
+}
 .button {
   display: block !important;
   transition: background-color 0.25s ease !important;

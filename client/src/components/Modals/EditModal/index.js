@@ -10,7 +10,7 @@ import Buttons from '../buttons';
 import Radios from '../radios';
 
 function getModalStyle() {
-  const top = 50;
+  const top = 45;
   const left = 50;
 
   return {

@@ -1,13 +1,5 @@
+http://www.javascriptpoint.com/nodejs-postgresql-tutorial-example/
 
-https://devcenter.heroku.com/articles/getting-started-with-nodejs#set-up
+http://mherman.org/blog/2015/02/12/postgresql-and-nodejs/
 
-https://coderjourney.com/tutorials/how-to-deploy-a-react-application/
-
-https://medium.com/@baphemot/understanding-react-deployment-5a717d4378fd
-
-https://codebrahma.com/deploy-react-application-depth-overview-various-options-deploy/
-
-https://www.fullstackreact.com/articles/deploying-a-react-app-with-a-server/
-
-npm install -g pushstate-server
-pushstate-server build
+http://expressjs.com/ru/guide/database-integration.html#postgres

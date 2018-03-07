@@ -88,9 +88,9 @@ export default class TasksTable extends Component {
             userId={this.props.userId}
             deleteTask={this.props.deleteTask}
           />)
-    } else if(Number(taskDone) === 1 && this.getTaskByPriority(priority, category, taskDone).size > 0) {
+    } else if(Number(taskDone) === 1 && this.getTaskByPriority('all', category, taskDone).size > 0) {
       tableContent = 
-        this.getTaskByPriority(priority, category, taskDone).map(task => 
+        this.props.tasksList.filter(task => task.get('isDone') === 1).map(task => 
           <DoneTask key={task.get('id')} task={task} />)
     } else {
       tableContent = 
@@ -114,7 +114,9 @@ export default class TasksTable extends Component {
           </Table>
         </div>
         <div className="buttons-container">
-          <FilterCategoriesBtn filtersOpened={this.state.filtersOpened} changeFiltersVisibility={this.changeFiltersVisibility} />
+          <FilterCategoriesBtn 
+            filtersOpened={this.state.filtersOpened} 
+            changeFiltersVisibility={this.changeFiltersVisibility} />
           <ClearTasksBtn 
             clearTasksList={this.props.clearTasksList} 
             category={category} 

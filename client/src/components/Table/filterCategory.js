@@ -61,6 +61,37 @@ function FilterCategory(props) {
         >
         </Badge>
       </span>;
+  } else {
+    labelDay = 
+      <span>
+        Day 
+        <Badge 
+          className={classes.margin} 
+          badgeContent=''
+          color="primary"
+        >
+        </Badge>
+      </span>;
+    labelWeek = 
+      <span>
+        Week
+        <Badge 
+          className={classes.margin} 
+          badgeContent=''
+          color="primary"
+        >
+        </Badge>
+      </span>;
+    labelMonth = 
+      <span>
+        Month 
+        <Badge 
+          className={classes.margin} 
+          badgeContent='' 
+          color="primary"
+        >
+        </Badge>
+      </span>
   }
   
   return (
@@ -68,7 +99,7 @@ function FilterCategory(props) {
       <FormControl 
         component="fieldset" 
         required 
-        className={Number(props.taskDone) === 0 ? "form-control" : "hidden"}
+        className={Number(props.taskDone) === 0 ? "form-control" : "form-control hidden"}
       >
         <FormLabel component="legend" className="form-label">Time Category</FormLabel>
         <RadioGroup
@@ -96,6 +127,23 @@ function FilterCategory(props) {
         </RadioGroup>
       </FormControl>
       <FormControl component="fieldset" required className="form-control">
+        <FormLabel component="legend" className="form-label">Task is done?</FormLabel>
+        <RadioGroup
+          aria-label="taskDone"
+          name="taskDone"
+          className="radio-group"
+          value={props.taskDone.toString()}
+          onChange={props.changeFilterCriteria}
+        >
+          <FormControlLabel value="1" control={<Radio />} label="Done" />
+          <FormControlLabel value="0" control={<Radio />} label="Not done" />
+        </RadioGroup>
+      </FormControl>
+      <FormControl 
+        component="fieldset" 
+        required 
+        className={Number(props.taskDone) === 0 ? "form-control" : "form-control hidden"}
+      >
         <FormLabel component="legend" className="form-label">Task Priority</FormLabel>
         <RadioGroup
           aria-label="priority"
@@ -108,19 +156,6 @@ function FilterCategory(props) {
           <FormControlLabel value="2" control={<Radio />} label="Middle" />
           <FormControlLabel value="3" control={<Radio />} label="Low" />
           <FormControlLabel value="all" control={<Radio />} label="All" />
-        </RadioGroup>
-      </FormControl>
-      <FormControl component="fieldset" required className="form-control">
-        <FormLabel component="legend" className="form-label">Task is done?</FormLabel>
-        <RadioGroup
-          aria-label="taskDone"
-          name="taskDone"
-          className="radio-group"
-          value={props.taskDone.toString()}
-          onChange={props.changeFilterCriteria}
-        >
-          <FormControlLabel value="1" control={<Radio />} label="Done" />
-          <FormControlLabel value="0" control={<Radio />} label="Not done" />
         </RadioGroup>
       </FormControl>
     </div>

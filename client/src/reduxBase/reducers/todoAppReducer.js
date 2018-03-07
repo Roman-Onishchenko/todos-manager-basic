@@ -8,14 +8,7 @@ const initialState = new Map({
   }),
   userExist: false,
   userNotAuth: false,
-  tasks: new List([
-    new Map({
-      id: 1,
-      text: 'LoremLorem', 
-      priority: '1',
-      category: 'day',
-    }),
-  ]),
+  tasks: new List([ ]),
   modalType: null,
   taskId: null,
   errorMessage: null,

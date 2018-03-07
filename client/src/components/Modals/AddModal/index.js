@@ -10,13 +10,13 @@ import Buttons from '../buttons';
 import Radios from '../radios';
 
 function getModalStyle() {
-  const top = 50;
+  const top = 45;
   const left = 50;
 
   return {
     top: `${top}%`,
     left: `${left}%`,
-    transform: `translate(-${top}%, -${left}%)`,
+    transform: `translate(-50%, -50%)`,
   };
 }
 

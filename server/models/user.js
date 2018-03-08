@@ -79,11 +79,13 @@ exports.updateTask = (id, task, cb) => {
 };
 
 exports.deleteTask = (id, data, cb) => {
-	if(data.id) {
-		Users.update({ id }, { $pull: { tasks: { id: data.id } }}, (err, status) => {
-		  cb(err, status)
-	  });
-	} else if (data.isDone === 0) {
+	Users.update({ id }, { $pull: { tasks: { id: data.id } }}, (err, status) => {
+	  cb(err, status)
+  });
+};
+
+exports.deleteTasks = (id, data, cb) => {
+  if (data.isDone === 0) {
 		Users.update({ id }, { $pull: { tasks: { isDone: data.isDone, category: data.category } }}, (err, status) => {
 		  cb(err, status)
 	  });

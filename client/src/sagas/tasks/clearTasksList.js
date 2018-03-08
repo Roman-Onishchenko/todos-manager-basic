@@ -10,7 +10,7 @@ export default function* clearTasksList(action) {
   	isDone: action.isDone
   };
   try {
-    yield call(api.remove, `/deleteTask/${action.userId}`, deleteData);
+    yield call(api.remove, `/deleteTasks/${action.userId}`, deleteData);
   } catch (response) {
     yield put(setErrorMessage(response.error));
     return;

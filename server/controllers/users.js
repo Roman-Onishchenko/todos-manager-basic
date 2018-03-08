@@ -1,97 +1,57 @@
-const mongoose = require("mongoose");
-const md5 = require("blueimp-md5");
-const Schema = mongoose.Schema;
+const express = require('express'),
+      router = express.Router(),
+      User = require('../models/user');
 
-mongoose.Promise = global.Promise;
-mongoose.connect("mongodb://localhost:27017/usersdb");
+router.get('/getTasks/:id', (req, res) => {
+  const id = req.params.id;
+  User.get(id, (err, user) => {
+    if(err) return res.status(400).send();
+    res.send(user[0])
+  })
+})
 
-const user = {
-	id: String,
-	name: String,
-	login: String,
-	email: String,
-	pass: String,
-	tasks: [{
-		id: Number,
-		text: String,
-		isDone: Number,
-		priority: String,
-		category: String
-	}],
-};
+router.post('/authUser', (req, res) => {
+  User.checkAuth(req.body, (err, status) => {
+    res.send(status)
+  })
+})
 
-const userScheme = new Schema(user, {versionKey: false});
-const Users = mongoose.model('Users', userScheme);
+router.post('/createUser', (req, res) => {
+  User.createUser(req.body, (err, status) => {
+    res.send(status)
+  })
+})
 
-exports.get = (id, cb) => {
-	Users.find({id}, (err, user) => {
-		cb(err, user)
-	});
-}
+router.post('/createTask/:id', (req, res) => {
+  const id = req.params.id;
+  User.createTask(id, req.body, (err, status) => {
+    if(err) return res.status(400).send();
+    res.send(status)
+  })
+})
 
-exports.checkAuth = (data, cb) => {
-	Users.findOne({email: data.email, pass: md5(data.pass)}, (err, user) => {
-		if(!user) {
-			cb(err, {notAuth: true}); 
-		} else {
-				cb(err, user)
-			}
-		})
-	}
+router.put('/updateTask/:id', (req, res) => {
+  const id = req.params.id;
+  User.updateTask(id, req.body, (err, result) => {
+    if(err) return res.status(400).send();
+    res.send(result)
+  })
+})
 
-exports.createUser = (data, cb) => {
-	Users.findOne({email: data.email}, (err, user) => {
-		if(user) {
-			cb(err, {userExist: true}); 
-		} else {
-				Users.create({
-					id: md5(Date.now()),
-				  name: data.name,
-					login: data.login,
-					email: data.email,
-					pass: md5(data.pass),
-					tasks: [{}],
-				}, (err, user) => {
-					cb(err, user)
-				})
-			}
-  });
-};
+router.delete('/deleteTask/:id', (req, res) => {
+  const id = req.params.id;
+  User.deleteTask(id, req.body, (err, result) => {
+    if(err) return res.status(400).send();
+    res.send(result)
+  })
+})
 
-exports.createTask = (id, newTask, cb) => {
-	const task = {
-		id: Date.now(),
-		text: newTask.text,
-		isDone: newTask.isDone,
-		priority: newTask.priority,
-		category: newTask.category
-	};
+router.delete('/deleteTasks/:id', (req, res) => {
+  const id = req.params.id;
+  User.deleteTasks(id, req.body, (err, result) => {
+    if(err) return res.status(400).send();
+    res.send(result)
+  })
+})
 
-	Users.update({ id }, { $push: { tasks: task } }, (err, status) => {
-		cb(err, status)
-  });
-};
-
-exports.updateTask = (id, task, cb) => {
-	Users.updateOne({ id, "tasks.id": task.id}, { $set: { "tasks.$": task }}, (err, status) => {
-	  cb(err, status)
-  });
-};
-
-exports.deleteTask = (id, data, cb) => {
-	Users.update({ id }, { $pull: { tasks: { id: data.id } }}, (err, status) => {
-	  cb(err, status)
-  });
-};
-
-exports.deleteTasks = (id, data, cb) => {
-  if (data.isDone === 0) {
-		Users.update({ id }, { $pull: { tasks: { isDone: data.isDone, category: data.category } }}, (err, status) => {
-		  cb(err, status)
-	  });
-	} else {
-		Users.update({ id }, { $pull: { tasks: { isDone: data.isDone } }}, (err, status) => {
-		  cb(err, status)
-	  });
-	}
-};
+module.exports = router

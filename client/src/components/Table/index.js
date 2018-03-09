@@ -76,6 +76,7 @@ export default class TasksTable extends Component {
 
   render() {
     const { priority, category, taskDone } = this.state;
+    const { tasksList } = this.props;
     let tableContent;
     if(Number(taskDone) === 0 && this.getTaskByPriority(priority, category, taskDone).size > 0) {
       tableContent = 
@@ -88,10 +89,12 @@ export default class TasksTable extends Component {
             userId={this.props.userId}
             deleteTask={this.props.deleteTask}
           />)
-    } else if(Number(taskDone) === 1 && this.getTaskByPriority('all', category, taskDone).size > 0) {
+    } else if(Number(taskDone) === 1 && tasksList.filter(task => task.get('isDone') === 1).size > 0) {
       tableContent = 
-        this.props.tasksList.filter(task => task.get('isDone') === 1).map(task => 
-          <DoneTask key={task.get('id')} task={task} />)
+        tasksList.filter(
+          task => task.get('isDone') === 1).sort(
+          (taskA, taskB) => taskA.get("priority") - taskB.get("priority")).map(
+          task => <DoneTask key={task.get('id')} task={task} />)
     } else {
       tableContent = 
         <TableRow>

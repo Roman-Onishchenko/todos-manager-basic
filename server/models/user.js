@@ -66,9 +66,10 @@ exports.createTask = (id, newTask, cb) => {
 		priority: newTask.priority,
 		category: newTask.category
 	};
-
-	Users.update({ id }, { $push: { tasks: task } }, (err, status) => {
-		cb(err, status)
+	Users.update({ id }, { $pull: { tasks: { text: task.text } }}, (err, status) => {
+	  Users.update({ id }, { $push: { tasks: task } }, (err, status) => {
+			cb(err, status)
+	  });
   });
 };
 

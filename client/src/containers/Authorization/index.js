@@ -57,7 +57,7 @@ class Authorization extends React.Component {
   }
 
   handleChangeInput = (event) => {
-    if(event.target.value.length > 0) {
+    if(event.target.value.trim().length > 0) {
       this.setState({ [event.target.name]: event.target.value })
     } else {
       this.setState({ [event.target.name]: ''})

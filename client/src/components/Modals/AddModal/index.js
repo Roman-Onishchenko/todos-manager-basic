@@ -51,7 +51,7 @@ class AddModal extends React.Component {
   };
 
   handleChangeInput = (event) => {
-    if(event.target.value.length > 0) {
+    if(event.target.value.trim().length > 0) {
       this.setState({ inputValue: event.target.value })
     } else {
       this.setState({ inputValue: '' })

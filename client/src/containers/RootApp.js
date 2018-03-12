@@ -7,6 +7,7 @@ import * as actions from '../reduxBase/actions/';
 import TasksTable from '../components/Table/';
 import AddModal from '../components/Modals/AddModal/';
 import EditModal from '../components/Modals/EditModal/';
+import ErrorBoundary from '../components/ErrorBoundary/';
 
 class RootApp extends Component {
   static propTypes = {
@@ -36,38 +37,40 @@ class RootApp extends Component {
     }
     return (
       <div className="wrapper">
-        {modalType === 'addTask' &&
-          <AddModal
-            open
-            userId={userId}
-            hideTaskModal={this.props.hideTaskModal}
-            createTask={this.props.createTask}
-          />
-        }
-        {modalType === 'editTask' &&
-          <EditModal
-            open
-            userId={userId}
-            activeTask={activeTask}
-            hideTaskModal={this.props.hideTaskModal}
-            updateTask={this.props.updateTask}
-          />
-        }
-        {idsEqual && 
-          <TasksTable
-            errorMessage={errorMessage}
-            userLogin={localStorage.getItem('uLogin')}
-            userId={userId}
-            tasksList={tasksList}
-            showTaskAddModal={this.props.showTaskAddModal}
-            showTaskEditModal={this.props.showTaskEditModal}
-            deleteTask={this.props.deleteTask}
-            updateTask={this.props.updateTask}
-            doneTask={this.props.doneTask}
-            getTasks={this.props.getTasks}
-            clearTasksList={this.props.clearTasksList}
-          />
-        }
+        <ErrorBoundary>
+          {modalType === 'addTask' &&
+            <AddModal
+              open
+              userId={userId}
+              hideTaskModal={this.props.hideTaskModal}
+              createTask={this.props.createTask}
+            />
+          }
+          {modalType === 'editTask' &&
+            <EditModal
+              open
+              userId={userId}
+              activeTask={activeTask}
+              hideTaskModal={this.props.hideTaskModal}
+              updateTask={this.props.updateTask}
+            />
+          }
+          {idsEqual && 
+            <TasksTable
+              errorMessage={errorMessage}
+              userLogin={localStorage.getItem('uLogin')}
+              userId={userId}
+              tasksList={tasksList}
+              showTaskAddModal={this.props.showTaskAddModal}
+              showTaskEditModal={this.props.showTaskEditModal}
+              deleteTask={this.props.deleteTask}
+              updateTask={this.props.updateTask}
+              doneTask={this.props.doneTask}
+              getTasks={this.props.getTasks}
+              clearTasksList={this.props.clearTasksList}
+            />
+          }
+        </ErrorBoundary>
       </div>
     );
   }

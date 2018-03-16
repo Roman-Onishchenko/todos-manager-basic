@@ -1,5 +1,2 @@
-http://www.javascriptpoint.com/nodejs-postgresql-tutorial-example/
+https://www.youtube.com/watch?v=-RtJroTMDf4
 
-http://mherman.org/blog/2015/02/12/postgresql-and-nodejs/
-
-http://expressjs.com/ru/guide/database-integration.html#postgres

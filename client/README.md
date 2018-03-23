@@ -1,15 +1,9 @@
-https://www.youtube.com/watch?v=-RtJroTMDf4
+https://coursework.vschool.io/deploying-mern-with-heroku/
 
-https://dev.to/aurelkurtula/creating-an-app-with-react-and-firebase---part-two-5hmc
+https://medium.com/@s1akr/deploying-a-mern-mongo-express-react-node-stack-web-app-on-to-heroku-d6a7745f88ba
 
-https://www.codementor.io/yurio/all-you-need-is-react-firebase-4v7g9p4kf
+https://medium.com/@katestamas/heroku-deployment-with-react-node-mongoose-and-webpack-ff37bd80d7af
 
-https://appdividend.com/2017/07/22/react-firebase-tutorial/
+https://devcenter.heroku.com/articles/getting-started-with-nodejs#set-up
 
-https://dev.to/aurelkurtula/introduction-to-firebases-real-time-database-89l
-
-http://developine.com/how-to-host-your-website-on-firebase-for-free-and-connect-with-custom-godaddy-domain-tutorial/
-
-https://medium.com/google-developer-experts/deploy-your-app-to-firebase-in-seconds-b3a9a37dff47
-
-https://medium.com/google-cloud/google-firebase-can-host-your-website-and-single-page-application-4e9c9e0c6a95
+https://github.com/jeffreynerona/mern-io-heroku

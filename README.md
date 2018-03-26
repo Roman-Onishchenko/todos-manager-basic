@@ -1,7 +1,7 @@
 ## Full stack todoList app
 ![Imgur](https://i.imgur.com/2txu3Yb.png)
 
-### You can visit an app via the [link](https://www.google.com)
+### You can visit an app via the [link](https://todos-manager.herokuapp.com)
 In order to use an app's functionality, please enter the following login data: **login: _User_, pass: _user_**.
 
 + Client technologies:
@@ -16,4 +16,5 @@ In order to use an app's functionality, please enter the following login data: *
 + Server technologies:
   + Node.js
   + Express.js
+  + MongoDB
   + Mongoose

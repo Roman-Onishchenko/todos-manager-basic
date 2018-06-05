@@ -25,3 +25,63 @@
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
   }
 }
+
+new 
+
+{
+  "parser": "babel-eslint",
+  "plugins": [
+    "react"
+  ],
+  "env": {
+    "browser": true
+  },
+  "parserOptions": {
+    "ecmaFeatures": {
+      "es6": true,
+      "jsx": true,
+      "modules": true
+    }
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "airbnb-base"
+  ],
+  "rules": {
+    "indent": [
+      2,
+      4
+    ],
+    "arrow-parens": [
+      2,
+      "always"
+    ],
+    "react/no-deprecated": 0,
+    "global-require": 0,
+    "curly": [
+      2,
+      "all"
+    ],
+    "no-console": [
+      2,
+      {
+        "allow": [
+          "error",
+          "debug"
+        ]
+      }
+    ],
+    "import/no-unresolved": [
+      2,
+      {
+        "ignore": [
+          ".png",
+          ".jpg",
+          ".jpeg",
+          ".svg"
+        ]
+      }
+    ]
+  }
+}
